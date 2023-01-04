@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "kleiner.h"
 
-int kleiner(float, float);
-
 void main(){
 	float a, b;
 	printf("\n\n\tWho is the little brother here!?\n");
