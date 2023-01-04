@@ -3,7 +3,7 @@ default: fibonacci
 fibonacci.o: fibonacci.c
 	gcc -c fibonacci.c -o fibonacci.o
 
-fibonacci: fibonnaci.o
+fibonacci: fibonacci.o
 	gcc fibonacci.o -o fibonacci
 
 clean:
