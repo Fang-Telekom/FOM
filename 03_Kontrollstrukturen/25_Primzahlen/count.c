@@ -3,7 +3,7 @@
 int count(int n){
 	if(n <= 0)
 		return 0;
-	else if(n == 1)
+	else if(n == 1){
 		printf("1 ;\n Willst wirklich nur eins wissen?");
 		return 0;
 	}
