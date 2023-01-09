@@ -14,6 +14,7 @@ int count(int n){
 			return 1;
 		break;
 		defautlt:
+			printf("1 ; 2 ; ");
 			int allPrim = 1, p_anzahl = 0, c = 3;
 			while(allPrim){
 				if(n == 2)
@@ -30,7 +31,7 @@ int count(int n){
 					printf("%d ; ", c);
 					p_anzahl++;
 					if(p_anzahl >= n-2)
-						p = 0;
+						allPrim = 0;
 				}
 				c += 2;
 			}
