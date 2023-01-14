@@ -1,9 +1,13 @@
 # FOM
-Task-Collection and Projects for Procedural Programming C
+Repository for Task-Collection and Projects for studying purposes.
 
-Hi Guys,
+Current Programming Languanges:
+      -     Procedural Programming C
+      -     Java
 
-I am a dual Student at Telekom studying at FOM.
+Hey Guys,
+
+I am a Student at the University FOM, studiyng Business Information. At the same time, I work at Telekom.
 
 Have a nice day.
 
