@@ -7,7 +7,7 @@ Current Programming Languanges:
 
 Hey Guys,
 
-I am a Student at the University FOM, studiyng Business Information. At the same time, I work at Telekom.
+I am a Student at the University FOM, studiyng Business Information Science. At the same time, I work at Telekom.
 
 Have a nice day.
 
