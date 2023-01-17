@@ -10,7 +10,7 @@ void main(){
 	
 	int size = sizeof(string)/sizeof(char);
 	int nSize = sizeof(name)/sizeof(char);
-	string[size-nSize+1] = '\0';
+	*name = '\0';
 	printf("\n%s\n", string);
 
 }
