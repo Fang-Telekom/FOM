@@ -14,8 +14,6 @@ kreis: kreis.o umfang.o inhalt.o
 	gcc kreis.o umfang.o inhalt.o -o kreis
 
 clean:
-	rm -f kreis.o
-	rm -f umfang.o
-	rm -f inhalt.o
-
+	rm -f *.o
+	rm -f kreis
 

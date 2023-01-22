@@ -6,7 +6,7 @@ void main(){
 	printf("Geben Sie bitte den Radius des Kreises ein: ");
 	scanf("%f",&r);
 
-	printf("\nDer Kreisumfang ist \t %.02f", umfang(r, pi));
-	printf("\nDer Flächeninhalt ist \t %.02f", inhalt(r, pi));
+	printf("\nDer Kreisumfang ist \t %f", umfang(r, pi));
+	printf("\nDer Flächeninhalt ist \t %f", inhalt(r, pi));
 	printf("\nVielen Dank für Ihren Beitrag!\n\n");
 }
