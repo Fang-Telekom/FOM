@@ -19,7 +19,15 @@ void main(){
 	printf("\n\nWillkommen. Hier werden 5 Namen aufgelistet.\n");
 	
 	for(int i = 0; i < 5; i++){
-		printf("\n%s",ausgabe(vorname[i], nachname[i]));
+		char zeile[81];
+		strcpy(zeile, vorname[i]);
+		for(int x = strlen(vorname[i]); x <= 80 - strlen(nachname[i]); x++){
+			zeile[x] = 'x';
+		}
+		strcat(zeile, nachname[i]);
+		zeile[81] = '\0';
+		
+		printf("\n%s",zeile);
 	}
 	printf("\n\n");
 }
