@@ -1,19 +1,20 @@
 package medium;
 
-protected class medium{
+protected class Medium{
 	private String titel, untertitel, autor;
-   	private int bestand, kennung, preis;
+	private int bestand=0, kennung, preis;
 	private static int sammlung = 0;
 	
-	public medium(String titel, String autor, int preis){
+	public Medium(String titel, String autor, int preis, int bestand){
 		this.titel = titel;
 		this.autor = autor;
 		this.preis = preis;
-		
-		bestand = ++sammlung;
+		this.bestand = bestand;
+
+		sammlung++;
 	}
-	public medium(String titel, String untertitel, String autor, int preis){
-		this(titel, autor, preis);
+	public Medium(String titel, String untertitel, String autor, int preis, int bestand){
+		this(titel, autor, preis, bestand);
 		this.untertitel = untertitel;
 	}
 	
