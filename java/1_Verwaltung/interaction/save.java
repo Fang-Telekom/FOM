@@ -4,9 +4,10 @@ import java.io.*
 
 public class safe{
 	private final String file[];
-	private Object data[];
+	private String data[];
+	private Object objects[][];
 
-	public safe(String... file){
+	public safe(String file){
 		this.file = file;
 		for(int i = 0; i < file.length(); i++)
 			File file = new File(file);
