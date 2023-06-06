@@ -8,7 +8,7 @@ public class Buch extends Medium{
 		sammlung++;
 	}
 	public Buch(String titel, String untertitel, String autor, int preis, int bestand){
-		super(titel, untertiel, autor, preis, bestand);
+		super(titel, untertitel, autor, preis, bestand);
 		sammlung++;
 	}
 

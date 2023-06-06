@@ -1,6 +1,6 @@
 package medium;
 
-protected class Medium{
+public class Medium{
 	private String titel, untertitel, autor;
 	private int bestand=0, kennung, preis;
 	private static int sammlung = 0;
@@ -30,7 +30,7 @@ protected class Medium{
 		this.untertitel = untertitel;
 	}
 	public String getUntertitel(){
-		return untertitel();
+		return untertitel;
 	}
 	/*
 	public void setKennung(int kennung){
