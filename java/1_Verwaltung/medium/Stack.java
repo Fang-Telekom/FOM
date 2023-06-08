@@ -1,14 +1,16 @@
 package medium;
 
-public class Stack<M extends Medium>{
+import java.io.Serializable;
+
+public class Stack<M extends Medium> implements Serializable{
 	
 	private Object stack[];
+	private final String kennung;
+	private static int ser = 0;
 	
-	public Stack(){
-		stack = null;
-	}
 	public Stack(M... medium){
 		stack = medium;
+		kennung = medium[0].getKennung() + "_" + (ser++);
 	}
 
 	public Object get(int i){
@@ -34,5 +36,15 @@ public class Stack<M extends Medium>{
 	public int size(){
 		return stack.length;
 	}
+
+	public M[] getStack() {
+		return (M[]) stack;
+	}
+
+	public String getKennung() {
+		return kennung;
+	}
+	
+	
 }
 

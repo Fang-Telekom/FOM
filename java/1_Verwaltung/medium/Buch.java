@@ -1,16 +1,30 @@
 package medium;
 
-public class Buch extends Medium{
+import java.io.Serializable;
 
-	private static int sammlung = 0;
-	public Buch(String titel, String autor, int preis, int bestand){
-		super(titel, autor, preis, bestand);
-		sammlung++;
+public class Buch extends Medium implements Serializable{
+
+	//private static int sammlung = 0;
+	private final String category;
+	
+	public Buch(String category, String sub, String titel, String untertitel, String autor, int preis, int bestand) {
+		this(category, sub, titel, autor, preis, bestand);
+		super.setUntertitel(untertitel);
 	}
-	public Buch(String titel, String untertitel, String autor, int preis, int bestand){
-		super(titel, untertitel, autor, preis, bestand);
-		sammlung++;
+	
+	public Buch(String category, String sub, String titel, String autor, int preis, int bestand){
+		super(category, sub, titel, autor, preis, bestand);
+		this.category = category;
+//		sammlung++;
+		
 	}
 
+	public String getCategory() {
+		return category;
+	}
 
+	/*public static int getSammlung() {
+		return sammlung;
+	}*/
+	
 }
