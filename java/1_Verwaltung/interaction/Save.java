@@ -38,7 +38,6 @@ public class Save{
 		Scanner scan;
 		try {
 			scan = new Scanner(new FileInputStream(path + sourceFile));
-			int count = 0;
 			if(!scan.hasNextLine()) {
 				System.out.println("FIles are empty");
 				return;
@@ -79,7 +78,7 @@ public class Save{
 			scan = new Scanner(new FileInputStream(path + sourceFile));
 			
 			while(scan.hasNextLine()){
-				increase(data);
+				data = increase(data);
 				data[data.length - 1] = scan.nextLine();
 				
 			}
@@ -95,7 +94,7 @@ public class Save{
 	//Adding new Object to Files
 	//Adding a new type of Object
 	//Creating a new File
-	public void add(String file, Stack/*Object...*/ input) throws IOException{
+	public void add(String file, Stack<?> input) throws IOException{
 		
 		FileOutputStream fos = new FileOutputStream(path + file);
 		

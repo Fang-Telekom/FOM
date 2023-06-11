@@ -4,12 +4,13 @@ import java.io.Serializable;
 
 public class Medium implements Serializable{
 	private String titel, untertitel, autor;
-	private int bestand=0, preis;
+	private int bestand = 0;
+	private float preis;
 //	private static int sammlung = 0;
 	private String kennung;
 	private final String category, sub;
 	
-	public Medium(String category, String sub, String titel, String autor, int preis, int bestand){
+	public Medium(String category, String sub, String titel, String autor, float preis, int bestand){
 		this.titel = titel;
 		this.autor = autor;
 		this.preis = preis;
@@ -20,7 +21,7 @@ public class Medium implements Serializable{
 		kennung = this.category + "_" + this.sub;
 //		sammlung++;
 	}
-	public Medium(String category, String sub, String titel, String untertitel, String autor, int preis, int bestand){
+	public Medium(String category, String sub, String titel, String untertitel, String autor, float preis, int bestand){
 		this(category, sub, titel, autor, preis, bestand);
 		this.untertitel = untertitel;
 	}
@@ -52,7 +53,7 @@ public class Medium implements Serializable{
 	public int getBestand(){
 		return bestand;
 	}
-	public int getPreis() {
+	public float getPreis() {
 		return preis;
 	}
 	public void setPreis(int preis) {
