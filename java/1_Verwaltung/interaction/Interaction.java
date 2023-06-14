@@ -26,6 +26,7 @@ public class Interaction implements ActionListener{
 	private final String meta;*/
 	
 	private Save save;
+	private Messages message;
 	
 	private JFrame frame;
 	private JButton addingItem;
@@ -67,6 +68,7 @@ public class Interaction implements ActionListener{
 		this.meta = meta;*/
 		
 		save = new Save(path, file, meta);
+		message = new Messages();
 		load();
 	}
 	public void load() {
@@ -139,52 +141,36 @@ public class Interaction implements ActionListener{
 			return;*/	
 		
 		tableModal = new JFrame("Add Item");
-		tableModal.setSize(300, 400);
-		tableModal.setLayout(null);
+		tableModal.setSize(800, 300);
+		tableModal.setLayout(new FlowLayout());
 		tableModal.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		tableModal.setResizable(false);
+		
 		tableModal.setLocationRelativeTo(null);
 		
 		String column[] = {"Category", "Subtype", "Title", "Subtitle", "Price", "Stock"};
 		Object[][] data;
-		if(stack.length != 0) {
-			data = new Object[stack.length][];
 		
-			for(int i = 0; i < stack.length; i++){
-				for(int s = 0; s < stack[i].getStack().length; s++) {
-					Object[] tps = {stack[i].getStack()[s].getCategory(),
-							stack[i].getStack()[s].getSub(),
-							stack[i].getStack()[s].getTitel(),
-							stack[i].getStack()[s].getUntertitel(),
-							stack[i].getStack()[s].getPreis(),
-							stack[i].getStack()[s].getBestand()};
-					data[i] = tps;
-				}
+		data = new Object[stack.length + 1][column.length];
+		data[0] = column;
+		for(int i = 0; i < stack.length; i++){
+			for(int s = 0; s < stack[i].getStack().length; s++) {
+				Object[] tps = {stack[i].getStack()[s].getCategory(),
+						stack[i].getStack()[s].getSub(),
+						stack[i].getStack()[s].getTitel(),
+						stack[i].getStack()[s].getUntertitel(),
+						stack[i].getStack()[s].getPreis(),
+						stack[i].getStack()[s].getBestand()};
+				data[i + 1] = tps;			
 			}
-		} else {
-			data = new Object[1][column.length];
 		}
 		JTable table = new JTable(data, column);
-		table.setBounds(0, 0, 300, 400);
+		//table.setMinimumSize(new Dimension(800, 300));
 		
-		//tableModal.pack();
-		/*switch (Integer.parseInt(scan.nextLine())) {
-		
-			case 1:
-				System.out.print("Filter Category: ");
-				boolean[] is = filterCategory(stack, scan.nextLine());
-				for(int i = 0; i < is.length; i++){
-					if(is[i]) {
-						for(int s = 0; s < stack[i].getStack().length; s++)
-							System.out.println("\t" + stack[i].getStack()[s].getCategory() + " " +
-									stack[i].getStack()[s].getSub() + ": " + 
-									stack[i].getStack()[s].getTitel() + " - " +
-									stack[i].getStack()[s].getUntertitel() +" : " +
-									stack[i].getStack()[s].getPreis() + "€ ; Auf Lager: " +
-									stack[i].getStack()[s].getBestand());
-		 */
-		
+		table.setBounds(0, 0, 800, 300);
+		table.setEnabled(false);
+		//t
 		tableModal.add(table);
+		//tableModal.pack();
 		tableModal.setVisible(true);
 	}
 	public void addItem() {
@@ -285,17 +271,14 @@ public class Interaction implements ActionListener{
 				addItemModal.remove(addItem[0]);
 				addItemModal.add(subList);
 			}
-			//TODO temporary solution
+			
 			addItemModal.repaint();
 					
 		} else if(e.getSource() == this.cancel) {
 			addItemModal.dispose();
 		} else if(e.getSource() == this.create) {
 			try {
-				if(!addItemModal.isDisplayable())
-					create();
-				else
-					addItemModal.transferFocus();
+				create();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -312,39 +295,57 @@ public class Interaction implements ActionListener{
 			p = Float.parseFloat(addItem[4].getText());
 			s = Integer.parseInt(addItem[5].getText());
 		} catch(Exception ex) {
-			//TODO
+			message.Message("Please, tip in Numbers in Price and Stocks", addItemModal);
 			return;
 		}
 		if(t.equals("")) {
+			message.Message("Please, give a Title", addItemModal);
 			return;
 		} else if(a.equals("")) {
+			message.Message("Please, give an Author", addItemModal);
 			return;
 		}
-		int selected = subList.getSelectedIndex();
+		
 		if(newSub.isSelected()) {
-			if(st.equals(""))
+			if(st.equals("")) {
+				message.Message("please give Subtype", addItemModal);
 				return;
-			stack = push(stack);
+			}
+			if(stack != null || stack.length == 0){
+				Stack<?> temp[] = new Stack [stack.length + 1];
+				for(int i = 0; i < stack.length; i++)
+					temp[i] = stack[i];
+				stack = temp;
+			}
+			else{
+				stack = new Stack[1];
+			}
+			
+			
 			switch(categories[categoryList.getSelectedIndex()]) {
 			case "Buch":
 				stack[stack.length - 1] = new Stack<Buch>(new Buch("Buch", st, t, addItem[3].getText(), a, p, s));
-				addItemModal.dispose();
+				
 				save.add(stack[stack.length - 1].getKennung(), stack[stack.length - 1]);
+				message.Message("Sucess", addItemModal);
+				addItemModal.dispose();
 				break;
 			}
 		} else {
+			int selected = subList.getSelectedIndex();
 			switch(categories[categoryList.getSelectedIndex()]) {
 			case "Buch":
 				stack[selected].push(new Buch("Buch", st, t, addItem[3].getText(), a,p, s));
+				save.add(stack[selected].getKennung(), stack[selected]);
+				message.Message("Sucess", addItemModal);
 				addItemModal.dispose();
-				save.add(stack[selected].getKennung(), stack[selected]);	
 				break;
 			}
 		}
 		
 	}
 			
-	public Stack<?>[] push(Stack<?>[] s) {
+/*	public Stack<?>[] push(Stack<?>[] s) {
 		if(stack != null){
 			Stack<?> temp[] = new Stack [s.length + 1];
 			for(int i = 0; i < s.length; i++)
@@ -354,7 +355,7 @@ public class Interaction implements ActionListener{
 		else{
 			return stack = new Stack[1];
 		}
-	}
+	}*/
 	public boolean[] filterCategory(Stack<?>[] stack, String category) {
 		boolean[] is = new boolean[stack.length];
 		for(int i = 0; i < stack.length; i++) {
