@@ -1,0 +1,3 @@
+krypton1 KRYPTONISGREAT - decode
+krypton2 ROTTEN - tr A-Za-z N-ZA-Mn-za-m Groß und KLeinschreibung, sowie Reihenfolge ist super wichtig
+krypton3 CAESARISEASY - decription of krypton3, it is already encripted

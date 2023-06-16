@@ -1,0 +1,7 @@
+leviathan1 PPIfmI1qsA - hidden in .backup/bookmarks
+leviathan2 mEh5PNl10e - try strings check, find info through ltrace
+leviathan3 Q0G8j4sakn - symbolic link to pass, two files, using space as ./printfile checking fails
+leviathan4 AgvropI4OA - simple ltrace to check pass, exec without ltrace
+leviathan5 EKKlTF1Xqs - convert binary to ascii, no spaces between the binaries
+leviathan6 YZ55XPVk2l - create symbolic link
+leviathan7 8GpZ5f8Hze - a loop go through, stops atright digit due to piping
