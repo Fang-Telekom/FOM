@@ -21,9 +21,6 @@ import javax.swing.table.TableModel;
 import medium.*;
 
 public class Interaction implements ActionListener{
-	/*private final String path;
-	private final String file;
-	private final String meta;*/
 	
 	private Save save;
 	private Messages message;
@@ -63,9 +60,6 @@ public class Interaction implements ActionListener{
 		this("./verwaltung/", "verwaltung.txt", "meta.txt");
 	}
 	public Interaction(String path, String file, String meta) {
-		/*this.path = path;
-		this.file = file;
-		this.meta = meta;*/
 		
 		save = new Save(path, file, meta);
 		message = new Messages();
@@ -166,11 +160,11 @@ public class Interaction implements ActionListener{
 		JTable table = new JTable(data, column);
 		//table.setMinimumSize(new Dimension(800, 300));
 		
-		table.setBounds(0, 0, 800, 300);
+		//table.setBounds(0, 0, 800, 300);
 		table.setEnabled(false);
 		//t
 		tableModal.add(table);
-		//tableModal.pack();
+		tableModal.pack();
 		tableModal.setVisible(true);
 	}
 	public void addItem() {

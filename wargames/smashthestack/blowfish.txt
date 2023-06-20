@@ -1,0 +1,5 @@
+level1 ThatWasEasy - caeser decoding, rot13, can use loop
+	code: for i in {0..26}; do echo 26 && echo GungJnfRnfl | tr -t A-Za-z -ZA-Z-za-z;done
+level2- n3xt_l3v3l! - find -executable 2>/dev/null
+level2 bl0wfi1sh_Rul3Z - find -executable -prem -4000
+level3 n3xt_l3v3l - perl -e printf exec(' ')

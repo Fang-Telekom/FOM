@@ -1,0 +1,11 @@
+natas0 g9D9cREhslqBKtcA2uocGHPfMZVzeFK6 - check the source
+natas1 h4ubbcXrWqsTo7GGnnUMLppXbOogfBZ7 - tip view:source intp url
+natas2 G6ctbMJ5Nb4cbFwhpMPSvxGHhQ7I6W8Q - Hidden file url: http://natas2.natas.labs.overthewire.org/files/
+natas3 tKOcJIbzM4lTs8hbCmzn5Zr4434fGZQm - robots.txt file path for search engine to exclude
+natas4 Z0NsrtIkJoKALBCLi5eqFfcRN82Au2oD - analyse network, get site, set referrer, use command curl http://url -H Authorization: Basic ...-H Referer: url
+natas5 fOIvE0MDtPTgRhqmmvvAOt2EfXR6uQgR - change loggin use curl
+natas6 jmxSiH3SP6Sonf8dv66ng8v1cIEdjXWr - do not just ignore include, check it
+natas7 a6bZCNYwdKqN5cGP11ZdtPg0iImQQhAB - check error, and get into the file
+natas8 Sda6t0vkOPkM8YeOZkAGVhFoaplvlJFd - decryption, used help try yourself next time
+natas9 D44EcsFkLxPIkAAKLosx8z3hxX1Z4MCE - look up what passthru do
+natas10 1KFqoJXi6hRaPluAmk8ESDW4fSysRoIg - research how grep interacts with spaces

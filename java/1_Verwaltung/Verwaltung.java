@@ -4,7 +4,8 @@
 
 import java.io.IOException;
 
-import interaction.*;
+import interaction.Interaction;
+
 /**
  * @author cupido
  *
