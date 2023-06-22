@@ -12,8 +12,8 @@ import medium.Stack;
 
 public class Gui {
 	
-	private AddItem add;
-	private LookItem look;
+	private Add add;
+	private Table look;
 	
 	private JButton addingItem;
 	private JButton addUser;
@@ -23,6 +23,9 @@ public class Gui {
 	private JFrame frame;
 	
 	public Gui(ActionListener listener) {
+		look = new Table(listener);
+		add = new Add(listener);
+		
 		frame = new JFrame();
 		//UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		addingItem =  new JButton("Add Item");
@@ -44,28 +47,24 @@ public class Gui {
 		
 		//auto calculate size
 		frame.pack();
-		//frame.setSize(600, 1000);
-		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-	    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-	    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-	    frame.setLocation(x, y);
+		frame.setLocationRelativeTo(null);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
 	
-	public void addItem(String[] categories, String[] sub, ActionListener listener) {
-		add = new AddItem(categories, sub, listener);
+	public void addItem(String[] categories, String[] sub) {
+		add.addItem(categories, sub);
 	}
 	public void lookItem(Stack<?>[] stack) {
-		look = new LookItem(stack);
+		look.itemTable(stack);
 	}
 
-	public AddItem getAdd() {
+	public Add getAdd() {
 		return add;
 	}
 
-	public LookItem getLook() {
+	public Table getTable() {
 		return look;
 	}
 

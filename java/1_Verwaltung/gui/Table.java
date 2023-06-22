@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -8,19 +9,30 @@ import javax.swing.JTable;
 
 import medium.Stack;
 
-public class LookItem {
-
-	public LookItem(Stack<?>[] stack) {
-		/*if(stack.length == 0)
-			return;*/	
-		
-		JFrame tableModal = new JFrame("Add Item");
-		tableModal.setSize(800, 300);
-		tableModal.setLayout(new FlowLayout());
-		tableModal.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		
-		tableModal.setLocationRelativeTo(null);
-		
+public class Table {
+	
+	ActionListener listener;
+	
+	public Table(ActionListener listener) {
+		this.listener = listener;
+	}
+	private void table(String[] column, Object[][] data) {
+	
+		JFrame frame = new JFrame("Add Item");
+		frame.setLayout(new FlowLayout());
+		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		frame.setAlwaysOnTop(true);
+	
+		JTable table = new JTable(data, column);
+		table.setEnabled(false);
+		frame.add(table);
+	
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+	
+	public void itemTable(Stack<?>[] stack) {
 		String column[] = {"Category", "Subtype", "Title", "Subtitle", "Price", "Stock"};
 		Object[][] data;
 		
@@ -37,15 +49,8 @@ public class LookItem {
 				data[i + 1] = tps;			
 			}
 		}
-		JTable table = new JTable(data, column);
-		//table.setMinimumSize(new Dimension(800, 300));
 		
-		//table.setBounds(0, 0, 800, 300);
-		table.setEnabled(false);
-		//t
-		tableModal.add(table);
-		tableModal.pack();
-		tableModal.setVisible(true);
+		table(column, data);
 	}
 
 }

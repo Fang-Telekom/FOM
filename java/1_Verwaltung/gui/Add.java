@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -8,16 +9,19 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
-public class AddItem {
+public class Add {
 	
+	private ActionListener listener;
 	private JFrame frame;
 	private JComboBox<String> categoryList;
 	
 	private JComboBox<String> subList;
 	private JCheckBox newSub;
-	private JButton create;
+	private JButton createItem;
 	private JButton cancel;
 	
 	private JTextField[] addItem = new JTextField[6];
@@ -28,15 +32,21 @@ public class AddItem {
 		4 price;
 		5 stock;*/
 	
-	public AddItem(String[] categories, String[] sub, ActionListener listener) {
+	public Add(ActionListener listener) {
+		this.listener = listener;
+	}
+	
+	public void addItem(String[] categories, String[] sub) {
+		
 		frame = new JFrame("Add Item");
 		frame.setSize(300, 400);
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setResizable(false);
-	    frame.setLocationRelativeTo(null);
-	    
-	    JLabel[] label = new JLabel[8];
+		frame.setLocationRelativeTo(null);
+		frame.setAlwaysOnTop(true);
+		
+		JLabel[] label = new JLabel[8];
 		categoryList = new JComboBox<String>(categories);
 		categoryList.setBounds(25, 20, 250, 25);
 		label[1] = new JLabel("Categories");
@@ -68,10 +78,10 @@ public class AddItem {
 		}
 		subList.setBounds(25, 90, 250, 25);
 		
-		create = new JButton("Create");
+		createItem = new JButton("Create");
 		cancel = new JButton("Cancel");
 		cancel.setBounds(25, 330, 120, 25);
-		create.setBounds(155, 330, 120, 25);
+		createItem.setBounds(155, 330, 120, 25);
 		
 		frame.add(categoryList);
 		frame.add(newSub);
@@ -85,16 +95,15 @@ public class AddItem {
 		for(int i = 0; i < label.length; i++)
 			frame.add(label[i]);
 		
-		frame.add(create);
+		frame.add(createItem);
 		frame.add(cancel);
 		
 		newSub.addActionListener(listener);
-		create.addActionListener(listener);
+		createItem.addActionListener(listener);
 		cancel.addActionListener(listener);
-	    
-	    frame.setVisible(true);
+		
+		frame.setVisible(true);
 	}
-	
 	public void dispose() {
 		frame.dispose();
 	}
@@ -123,8 +132,8 @@ public class AddItem {
 		return newSub;
 	}
 
-	public JButton getCreate() {
-		return create;
+	public JButton getCreateItem() {
+		return createItem;
 	}
 
 	public JButton getCancel() {

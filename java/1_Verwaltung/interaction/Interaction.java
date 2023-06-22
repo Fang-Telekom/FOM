@@ -24,10 +24,14 @@ public class Interaction implements ActionListener{
 		
 		save = new Save(path, file, meta);
 		message = new Messages();
+		
+	}
+	public void start() {
+		gui = new Gui(this);
 		load();
+		
 	}
 	public void load() {
-		//load
 		try {
 			
 			Object[] load = new Object[save.getDataFiles().length];
@@ -37,39 +41,21 @@ public class Interaction implements ActionListener{
 				c++;
 			}
 			stack = new Stack[load.length];
-		for(int i = 0; i < load.length; i++) {	
-			switch(getFiles()[i].split("_")[0]) {
-			case "Buch":
-				stack[i] = (Stack<Buch>) load[i];
-				break;
-			}
+			for(int i = 0; i < load.length; i++) {	
+				switch(getFiles()[i].split("_")[0]) {
+				case "Buch":
+					stack[i] = (Stack<Buch>) load[i];
+					break;
+				}
 			
-		}
-		System.out.println("Argh, there something\n Files has been found");
+			}
+			message.toast("Files has been found!", gui.getFrame());
 		} catch(Exception e){
 			stack = new Stack[0];
-			System.out.println("No File can be Found");
+			message.toast("No Files can be found!", gui.getFrame());
 			//e.printStackTrace();
 		}
 	}
-	public void start() throws IOException {
-		
-		
-		gui = new Gui(this);
-		
-	}
-
-	
-	/*public int duplicate(Stack<?> stack[], String subtype) {
-		
-		for(int i = 0; i < stack.length; i++) {
-			if(subtype.equals(stack[i].getStack()[0].getSub())) {
-				return i;
-			}
-		}
-		return -1;
-	}
-	*/
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -79,10 +65,10 @@ public class Interaction implements ActionListener{
 				String[] sub = new String[stack.length];
 				for(int i = 0; i < stack.length; i++)
 					sub[i] = stack[i].getStack()[0].getSub();
-				gui.addItem(categories, sub, this);
+				gui.addItem(categories, sub);
 			}
 			else
-				gui.addItem(categories, null, this);
+				gui.addItem(categories, null);
 			
 		} else if(e.getSource() == gui.getAddUser()) {
 			//modal = new JDialog(this.frame, "Add User", true);
@@ -95,7 +81,7 @@ public class Interaction implements ActionListener{
 					
 		} else if(e.getSource() == gui.getAdd().getCancel()) {
 			gui.getAdd().dispose();
-		} else if(e.getSource() == gui.getAdd().getCreate()) {
+		} else if(e.getSource() == gui.getAdd().getCreateItem()) {
 			try {
 				create();
 			} catch (IOException e1) {
@@ -165,17 +151,6 @@ public class Interaction implements ActionListener{
 		
 	}
 			
-/*	public Stack<?>[] push(Stack<?>[] s) {
-		if(stack != null){
-			Stack<?> temp[] = new Stack [s.length + 1];
-			for(int i = 0; i < s.length; i++)
-				temp[i] = s[i];
-			return temp;
-		}
-		else{
-			return stack = new Stack[1];
-		}
-	}*/
 	public boolean[] filterCategory(Stack<?>[] stack, String category) {
 		boolean[] is = new boolean[stack.length];
 		for(int i = 0; i < stack.length; i++) {
