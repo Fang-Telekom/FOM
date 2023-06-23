@@ -1,14 +1,10 @@
 package gui;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
-import medium.Stack;
 
 public class Gui {
 	
@@ -53,12 +49,12 @@ public class Gui {
 		frame.setVisible(true);
 	}
 	
-	public void addItem(String[] categories, String[] sub) {
+	/*public void addItem(String[] categories, String[] sub) {
 		add.addItem(categories, sub);
 	}
-	public void lookItem(Stack<?>[] stack) {
+	/**public void look(Stack<?>[] stack) {
 		look.itemTable(stack);
-	}
+	}*/
 
 	public Add getAdd() {
 		return add;

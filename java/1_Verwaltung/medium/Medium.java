@@ -2,6 +2,8 @@ package medium;
 
 import java.io.Serializable;
 
+import persons.Guest;
+
 public class Medium implements Serializable{
 	private String titel, untertitel, autor;
 	private int bestand = 0;
@@ -9,6 +11,8 @@ public class Medium implements Serializable{
 //	private static int sammlung = 0;
 	private String kennung;
 	private final String category, sub;
+	
+	private Guest ausleiher = null;
 	
 	public Medium(String category, String sub, String titel, String autor, float preis, int bestand){
 		this.titel = titel;
@@ -25,7 +29,23 @@ public class Medium implements Serializable{
 		this(category, sub, titel, autor, preis, bestand);
 		this.untertitel = untertitel;
 	}
-
+	
+	public void setAusleiher(Guest ausleiher) throws Exception {
+		if(ausleiher != null)
+			throw new Exception("Es gibt bereits ein Ausleiher");
+		this.ausleiher = ausleiher;
+	}
+	public boolean isAvailable() {
+		if(ausleiher != null)
+			return false;
+		return true;
+	}
+	public void returned() throws Exception {
+		if(ausleiher == null)
+			throw new Exception("Es gibt kein Ausleiher");
+		this.ausleiher = null;
+	}
+	
 	public void setTitel(String titel){
 		this.titel = titel;
 	}

@@ -22,7 +22,6 @@ public class Add {
 	private JComboBox<String> subList;
 	private JCheckBox newSub;
 	private JButton createItem;
-	private JButton cancel;
 	
 	private JTextField[] addItem = new JTextField[6];
 	/* 0 subtype;
@@ -32,10 +31,69 @@ public class Add {
 		4 price;
 		5 stock;*/
 	
+	private JButton createPerson;
+	private JTextField[] addPerson = new JTextField[8];
+	/* 0 ID
+	 * 1 Vorname
+	 * 2 Nachname
+	 * 3 Geburtstag
+	 * 4 Alter
+	 * 5 Adresse
+	 * 6 Credit
+	 * 7 Kommentar
+	 */
+	private JButton cancel;
+	
 	public Add(ActionListener listener) {
 		this.listener = listener;
 	}
 	
+	public void addPerson(int id) {
+		frame = new JFrame("Add User");
+		frame.setSize(300, 400);
+		frame.setLayout(null);
+		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setAlwaysOnTop(true);
+		
+		JLabel[] label = new JLabel[8];
+		
+		for(int y = 0; y < addPerson.length; y++) {
+			addPerson[y] = new JTextField();
+			addPerson[y].setBounds(25, y * 40 + 20, 250, 25);
+			label[y] = new JLabel();
+			label[y].setBounds(25, y * 40 + 7, 250, 15);
+		}
+		addPerson[0].setEditable(false);
+		addPerson[0].setText(id + "");
+		label[0].setText("ID");
+		label[1].setText("Vorname");
+		label[2].setText("Nachname");
+		label[3].setText("Geburtstag");
+		label[4].setText("Alter");
+		label[5].setText("Adresse");
+		label[6].setText("Credit");
+		label[7].setText("Kommentar");
+		
+		createPerson = new JButton("Create");
+		cancel = new JButton("Cancel");
+		cancel.setBounds(25, 330, 120, 25);
+		createPerson.setBounds(155, 330, 120, 25);
+		
+		for(int i = 0; i < addPerson.length; i++)
+			frame.add(addPerson[i]);
+		for(int i = 0; i < label.length; i++)
+			frame.add(label[i]);
+		
+		frame.add(createPerson);
+		frame.add(cancel);
+		
+		createPerson.addActionListener(listener);
+		cancel.addActionListener(listener);
+		
+		frame.setVisible(true);
+	}
 	public void addItem(String[] categories, String[] sub) {
 		
 		frame = new JFrame("Add Item");
@@ -135,7 +193,11 @@ public class Add {
 	public JButton getCreateItem() {
 		return createItem;
 	}
-
+	
+	public JButton getCreatePerson() {
+		return createPerson;
+	}
+	
 	public JButton getCancel() {
 		return cancel;
 	}
@@ -144,4 +206,7 @@ public class Add {
 		return addItem;
 	}
 	
+	public JTextField[] getAddPerson() {
+		return addPerson;
+	}
 }

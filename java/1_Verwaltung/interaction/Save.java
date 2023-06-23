@@ -172,14 +172,14 @@ public class Save{
 		oos.close();
 	}
 
-	public Object/*[]*/ getData(String file, int count){
+	public Object getData(String file, int count){
 		ObjectInputStream ois;
-		Object/*[]*/ objects = new Object()/*[count]*/;
+		Object objects = new Object();
 		try {
 			ois = new ObjectInputStream(new FileInputStream(path + file));
 		
 			for(int i = 0; i < counter[count]; i++){
-				objects/*[i]*/ = ois.readObject();
+				objects = ois.readObject();
 			}
 			ois.close();
 			return objects;

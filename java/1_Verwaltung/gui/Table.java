@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import medium.Stack;
+import persons.Persons;
 
 public class Table {
 	
@@ -31,12 +32,28 @@ public class Table {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
-	
+	public void personTable(Persons persons) {
+		String column[] = {"ID", "Vorname", "Nachname", "Geburtstag", "Alter", "Adresse", "Credit", "Kommentar"};
+		int size = 1;
+		size += persons.get().length;
+		Object[][] data = new Object[size][column.length];
+		
+		data[0] = column;
+		for(int i = 0; i < persons.get().length; i++) {
+			Object[] temp = {persons.get(i).getId(), persons.get(i).getVorname(),
+					persons.get(i).getNachname(), persons.get(i).getDate(), persons.get(i).getAge(),
+					persons.get(i).getAdresse(), persons.get(i).getCredit(), persons.get(i).getComment()};
+			data[i + 1] = temp;
+		}
+		table(column, data);
+	}
 	public void itemTable(Stack<?>[] stack) {
 		String column[] = {"Category", "Subtype", "Title", "Subtitle", "Price", "Stock"};
 		Object[][] data;
-		
-		data = new Object[stack.length + 1][column.length];
+		int size = 1;
+		for(int i = 0; i < stack.length; i++)
+			size += stack[i].get().length;
+		data = new Object[size][column.length];
 		data[0] = column;
 		for(int i = 0; i < stack.length; i++){
 			for(int s = 0; s < stack[i].getStack().length; s++) {

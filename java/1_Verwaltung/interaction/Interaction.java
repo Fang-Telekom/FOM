@@ -6,12 +6,14 @@ import java.io.IOException;
 
 import gui.Gui;
 import medium.*;
+import persons.Guest;
 
 public class Interaction implements ActionListener{
 	
 	private Save save;
 	private Messages message;
 	private Gui gui;
+	private Guest guest;
 	
 	private String[] categories = { "Buch" };
 
@@ -21,10 +23,9 @@ public class Interaction implements ActionListener{
 		this("./verwaltung/", "verwaltung.txt", "meta.txt");
 	}
 	public Interaction(String path, String file, String meta) {
-		
 		save = new Save(path, file, meta);
 		message = new Messages();
-		
+		guest = new Guest(path, "guest.txt");
 	}
 	public void start() {
 		gui = new Gui(this);
@@ -65,34 +66,61 @@ public class Interaction implements ActionListener{
 				String[] sub = new String[stack.length];
 				for(int i = 0; i < stack.length; i++)
 					sub[i] = stack[i].getStack()[0].getSub();
-				gui.addItem(categories, sub);
+				gui.getAdd().addItem(categories, sub);
 			}
 			else
-				gui.addItem(categories, null);
+				gui.getAdd().addItem(categories, null);
 			
 		} else if(e.getSource() == gui.getAddUser()) {
-			//modal = new JDialog(this.frame, "Add User", true);
+			gui.getAdd().addPerson(guest.get().length);
 		} else if(e.getSource() == gui.getLookItem()) {
-			gui.lookItem(stack);
+			gui.getTable().itemTable(stack);
 		} else if(e.getSource() == gui.getLookUser()) {
-			
+			gui.getTable().personTable(guest);
 		} else if(e.getSource() == gui.getAdd().getNewSub()) {
 			gui.getAdd().switchSub();
-					
 		} else if(e.getSource() == gui.getAdd().getCancel()) {
 			gui.getAdd().dispose();
 		} else if(e.getSource() == gui.getAdd().getCreateItem()) {
 			try {
-				create();
+				createItem();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+		} else if(e.getSource() == gui.getAdd().getCreatePerson()) {
+			createPerson();
 		}
 		
 	}
-	public void create() throws IOException {
+	public void createPerson() {
+		/* 0 ID
+		 * 1 Vorname
+		 * 2 Nachname
+		 * 3 Geburtstag
+		 * 4 Alter
+		 * 5 Adresse
+		 * 6 Credit
+		 * 7 Kommentar
+		 */
+		String vor = gui.getAdd().getAddPerson()[1].getText(),
+				nach = gui.getAdd().getAddPerson()[2].getText(),
+				date = gui.getAdd().getAddPerson()[3].getText(),
+				adresse = gui.getAdd().getAddPerson()[5].getText(),
+				comment = gui.getAdd().getAddPerson()[7].getText();
+		int age;
+		float credit;
+		try {
+			credit = Float.parseFloat(gui.getAdd().getAddPerson()[6].getText());
+			age = Integer.parseInt(gui.getAdd().getAddPerson()[4].getText());
+		} catch(Exception ex) {
+			message.Message("Please, tip in Numbers in age and credit", null);
+			return;
+		}
+		guest.add(vor, nach, adresse, date, age, credit, comment);
+		gui.getAdd().dispose();
+	}
+	public void createItem() throws IOException {
 		String st = gui.getAdd().getAddItem()[0].getText(), t = gui.getAdd().getAddItem()[2].getText(),
 				a = gui.getAdd().getAddItem()[1].getText();
 		float p;

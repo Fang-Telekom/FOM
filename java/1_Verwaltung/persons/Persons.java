@@ -1,54 +1,139 @@
 package persons;
 
-public abstract class Persons <P extends Persons.Person>{
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public abstract class Persons implements Serializable{
 	
-	P [] persons;
-	public Persons() {
-		
+	private Person [] persons = new Person[0];
+	private Save save;
+	
+	public Persons(String path, String file) {
+		try {
+			save = new Save(path, file);
+			save.load(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	public P get(int index) {
+	public Person get(int index) {
 		if(index >= 0 && index < persons.length)
 			return persons[index];
 		return null;
 	}
-	public void add(P newP) {
+	public Person[] get() {
+		return persons;
+	}
+	public void set(Person[] persons) {
+		this.persons = persons;
+	}
+	public void set(int index, Person person) {
+		this.persons[index] = person;
+	}
+	public void add(String vorname, String nachname, String adresse, String date, int age, float credit, String comment) {
+		try {
+			add(new Person(vorname, nachname, adresse, date, age, credit, comment));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private void add(Person newP) throws IOException {
 		if(persons != null){
-			P temp[] = (P[])(new Object [persons.length + 1]);
+			Person temp[] = new Persons.Person [persons.length + 1];
 			for(int i = 0; i < persons.length; i++)
 				temp[i] = persons[i];
 			temp[persons.length] = newP;
 			persons = temp;
 		}
 		else{
-			persons = (P[]) new Object [1];
+			persons = new Persons.Person [1];
 			persons[0] =newP;
 		}
+		save.save(this);
 	}
 	public void remove(int index) {
-		//TODO
+		if(index >= 0 && index < persons.length)
+			return;
+		else if (persons.length <= 1)
+			persons = (Person[]) new Object[0];;
+		Person[] temp = new Person[persons.length - 1];
+		for(int i = 0; i < index; i++)
+			temp[i] = persons[i];
+		for(int i = index; i < temp.length; i++)
+			temp[i] = persons[i - 1];
+		persons = temp;
 	}
 	
-	public abstract class Person implements Comparable<Person>{
+	public abstract String viewInfo();
+	public abstract String editInfo();
+	
+	class Save implements Serializable{
+		private final String file, path;
+		public Save(String path, String file) throws IOException {
+			this.file = file;
+			this.path = path;
+			
+			File source = new File (path+file);
+			if(!source.exists()) {
+				if(!path.equals("") && path != null)
+					source.getParentFile().mkdir();
+				source.createNewFile();
+			}
+		}
+		public void load(Persons persons) {		
+			ObjectInputStream ois = null;
+			try {
+				ois = new ObjectInputStream(new FileInputStream(path + file));	
+				do {
+					Person person = (Person) ois.readObject();
+					persons.add(person);
+				}while(true);
+			} catch (Exception e) {
+				try {
+					ois.close();
+				}catch(Exception ex) {}
+			}
+			
+		}
+		public void save(Persons person) throws IOException {
+			
+			ObjectOutputStream ops = new ObjectOutputStream(new FileOutputStream(path + file));
+			
+			for(int i = 0; i < person.get().length; i++)
+				ops.writeObject(person.get(i));
+			ops.close();
+		}
+	}
+	
+	public class Person implements Comparable<Person>, Serializable{
 		private String vorname, nachname, adresse, date;
 		private int age;
 		
-		private int credit;
+		private float credit;
 		private String comment;
 	
 		private final int id;
 		private static int persons = 0; 
 	
-		public Person(String vorname, String nachname, String adresse, int age) {
+		public Person(String vorname, String nachname, String adresse, String date, int age, float credit, String comment) {
 			this.vorname = vorname;
 			this.nachname = nachname;
 			this.adresse = adresse;
+			this.date = date;
 			this.age = age;
+			this.credit = credit;
+			this.comment = comment;
 		
 			id = persons++;
 		}
 	
-		public abstract String viewInfo();
-		public abstract String editInfo();
 	/*@Override
 	public int compareTo(GuestID guest) {
 		return guest.getAge() > this.getAge() ? 1 : guest.getAge() < this.getAge() ? -1 : 0;
@@ -118,7 +203,7 @@ public abstract class Persons <P extends Persons.Person>{
 			this.age = age;
 		}
 
-		public int getCredit() {
+		public float getCredit() {
 			return credit;
 		}
 
@@ -147,6 +232,5 @@ public abstract class Persons <P extends Persons.Person>{
 		}
 	
 	}
-	
-
 }
+
