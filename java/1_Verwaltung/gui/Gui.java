@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Gui {
 	
@@ -18,7 +20,7 @@ public class Gui {
 	
 	private JFrame frame;
 	
-	public Gui(ActionListener listener) {
+	public Gui(ActionListener listener) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		look = new Table(listener);
 		add = new Add(listener);
 		

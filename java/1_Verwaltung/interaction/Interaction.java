@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.UnsupportedLookAndFeelException;
+
 import gui.Gui;
 import medium.*;
 import persons.Guest;
@@ -28,7 +30,21 @@ public class Interaction implements ActionListener{
 		guest = new Guest(path, "guest.txt");
 	}
 	public void start() {
-		gui = new Gui(this);
+		try {
+			gui = new Gui(this);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		load();
 		
 	}
