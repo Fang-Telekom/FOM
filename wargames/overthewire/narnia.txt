@@ -1,1 +1,2 @@
 narnia0 eaa6AjYMBB - check little endian memory, man echo -e, 0x aka x - (echo ..; cat) keep the terminal open
+narnia1 Zzb6MIyceT - execute shellcode for getuid at shell-storm.org/shellcode
