@@ -24,3 +24,12 @@
 
 </html>
 
+<?php
+	} else{
+		$host = htmlspecialchars($_SERVER['HTTP_HOST']);
+		$url = rtrim(dirname(htmlspecialchars($_SERVER["PHP_SELF"])), "/\\");
+		$extra = "start.php";
+		header("Location:http://$host$url/$extra");
+	}
+?>
+

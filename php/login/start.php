@@ -16,8 +16,8 @@
 <body>
 
 	<?php
-		if(isset($_POST['error']) && isset($_POST['error'] == 1)){
-			echo "<p class='fehler'> Login-Daten sind nicht korrekt! </p>";
+		if(isset($_GET['error']) && $_GET['error'] == 1){
+			echo "<p class='error'> Login-Daten sind nicht korrekt! </p>";
 		}
 	?>
 	<form action="login.php" method="post">
@@ -30,6 +30,8 @@
 		<input type="submit" value="Login">
 		<input type="reset" value="Reset">
 	</ form>		
+	<br />
+	<p> <a href="register.php"> Ich möchte mich regristieren! </a></p>	
 
 </body>
 
