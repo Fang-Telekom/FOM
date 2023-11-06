@@ -20,9 +20,11 @@
 			header("Location: willkommen.php"); //Header für die Umleitung
 			exit;
 		}
+	} else{
+		header("Location:start.php?error=1"); //Setzung des Errors
+		exit;
+	
 	}
-	header("Location:start.php?error=1"); //Setzung des Errors
-	exit;
 
 ?>
 

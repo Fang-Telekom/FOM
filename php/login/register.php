@@ -31,7 +31,7 @@
 		Kapital <br />
 		<input type="number" name="kapital"> <br />
 		E-Mail <br />
-		<inpt type="text" name="mail"> <br />
+		<input type="text" name="mail"> <br />
 		<input type="submit" value="Anmelden"> <input type="reset">
 	</form>
 </body>
