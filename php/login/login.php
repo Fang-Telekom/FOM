@@ -2,7 +2,7 @@
 	session_start();
 	
 	if(isset($_POST['name']) && isset($_POST['pass'])){
-		$con = mysqli_connect("", "linux", "Hacken03");
+		$con = mysqli_connect("", "fom", "unifom");
 		mysqli_select_db($con, "uni");
 	
 		$sql = "select * from user where"

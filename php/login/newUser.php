@@ -1,6 +1,6 @@
 <?php
 	if(isset($_POST['name']) && isset($_POST['pass']) && isset($_POST['kapital']) && isset($_POST['mail'])){
-		$con = mysqli_connect("", "linux", "Hacken03");
+		$con = mysqli_connect("", "fom", "unifom");
 		mysqli_select_db($con, "uni");
 		$sql ="insert into user";
 		$sql .="(name, pass, kapital, mail) values("

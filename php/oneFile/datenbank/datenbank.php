@@ -1,6 +1,6 @@
 <?php
 	//Verbindung zum MySQLDatenbankserver aufnehmen
-$con = mysqli_connect("", "linux", "Hacken03"); //auch möflich: Host, Benutzer, Kennwort, DB
+	$con = mysqli_connect("", "fom", "unifom"); //auch möflich: Host, Benutzer, Kennwort, DB
 	
 	//Datenbank auswählen
 	mysqli_select_db($con, "uni");
