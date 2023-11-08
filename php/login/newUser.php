@@ -1,4 +1,5 @@
 <?php
+	echo "start";
 	if(isset($_POST['name']) && isset($_POST['pass']) &&
 		isset($_POST['kapital']) && isset($_POST['mail'])){
 		//Verbindung zum MySQLDatenbankserver aufnehmen
