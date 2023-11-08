@@ -9,12 +9,8 @@
 		mysqli_select_db($con, "uni");
 		//SQL-Abfrage ausführen
 		
-		mysqli_query($con, "insert into user
-			(name, pass, kapital, mail) values(
-			'" . $_POST['name'] . "',
-			'" . md5($_POST['pass']) . "', 
-			'" . $_POST['kapital'] . "', 
-			'" . $_POST['mail'] . "'");
+		mysqli_query($con, "insert into user (name, pass, kapital, mail) values('" . $_POST['name'] .
+			"', '" . md5($_POST['pass']) . "', '" . $_POST['kapital'] . "','" . $_POST['mail'] . "'");
 		mysqli_close($con);
 		echo "HI";
 		header("Location: login.php");
