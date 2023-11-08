@@ -4,31 +4,25 @@
 		isset($_POST['kapital']) && isset($_POST['mail'])){
 		//Verbindung zum MySQLDatenbankserver aufnehmen
 		$con = mysqli_connect("", "fom", "unifom"); //auch möflich: Host, Benutzer, Kennwort, DB
-		echo "con";
+		
 		//Datenbank auswählen
 		mysqli_select_db($con, "uni");
 		//SQL-Abfrage ausführen
-		echo "choose";
-		if(mysqli_query($con, "insert into user
+		
+		mysqli_query($con, "insert into user
 			(name, pass, kapital, mail) values(
 			'" . $_POST['name'] . "',
 			'" . md5($_POST['pass']) . "', 
 			'" . $_POST['kapital'] . "', 
-			'" . $_POST['mail'] . "'")){
-				mysqli_close($con);
-				echo "HI";
-				header("Location: login.php");
-				exit;
-		} else{
-			echo "HIll";
-			mysqli_close($con);
-			header("Location: register.php?error=1");
-			exit;
-		}
+			'" . $_POST['mail'] . "'");
+		mysqli_close($con);
+		echo "HI";
+		header("Location: login.php");
+		exit;
+	} else{
+		echo "HIll";
+		header("Location: register.php?error=1");
+		exit;
 	}
-
-	header("Location: register.php?error=1");
-	exit;
-		
 	
 ?>
