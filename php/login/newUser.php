@@ -8,6 +8,7 @@
 		//Datenbank auswählen
 		mysqli_select_db($con, "uni");
 		//SQL-Abfrage ausführen
+		echo "choose";
 		if(mysqli_query($con, "insert into user
 			(name, pass, kapital, mail) values(
 			'" . $_POST['name'] . "',
