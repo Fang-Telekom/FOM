@@ -21,10 +21,9 @@
 			exit;
 		} else
 			mysqli_close($con);
-	} else{
-		header("Location: start.php?error=1");
-		exit;
 	}
+	header("Location: start.php?error=1");
+	exit;
 ?>
 
 
