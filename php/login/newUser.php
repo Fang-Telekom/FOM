@@ -24,6 +24,9 @@
 			header("Location: register.php?error=1");
 			exit;
 		}
-		
 	}
+	header("Location: register.php?error=1");
+	exit;
+		
+	
 ?>
