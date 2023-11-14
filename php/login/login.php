@@ -12,11 +12,12 @@
 		"' and pass='" . md5($_POST['pass']) . "'");
 		//Anzahl Datensätze ermitelln und ausgeben
 		$num = mysqli_num_rows($req);
-
-		echo "$num Datensätze wurde gefunden";
-		if($num >= 1){
+		$dsatz = mysqli_fetch_assoc($req);
+		
+		if($num == 1){
 			$_SESSION['name'] = $_POST['name'];
 			$_SESSION['login'] = "1";
+			$_SESSION['admin'] = $dsatz['admin'];
 			header("Location: willkommen.php");
 			exit;
 		} else
