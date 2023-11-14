@@ -58,8 +58,9 @@ CREATE TABLE `user` (
   `pass` varchar(32) DEFAULT NULL,
   `kapital` int(11) DEFAULT NULL,
   `mail` varchar(50) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +70,12 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'Hans','3e45af4ca27ea2b03fc6183af40ea112',100000,'Hans.King@gmail.com');
+(1,'Hans','3e45af4ca27ea2b03fc6183af40ea112',100000,'Hans.King@gmail.com',1),
+(5,'Henry','d41d8cd98f00b204e9800998ecf8427e',5000,'Henry@gmail.com',0),
+(6,'Henry','3e45af4ca27ea2b03fc6183af40ea112',50000,'Henry@gmail.com',0),
+(7,'Zhi Yang Fang','3e45af4ca27ea2b03fc6183af40ea112',5000,'zhi-yang.fang@telekom.de',0),
+(8,'Henrie','3e45af4ca27ea2b03fc6183af40ea112',5000,'Henrie@gmail.com',0),
+(9,'Blob','3e45af4ca27ea2b03fc6183af40ea112',500,'blob@gmail.com',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -82,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-05 13:23:09
+-- Dump completed on 2023-11-14 22:13:00

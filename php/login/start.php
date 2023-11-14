@@ -9,6 +9,9 @@
 	.error{
 		color: red;
 	}
+	.code{
+		color: green;
+	}
 </style>
 
 </head>
@@ -18,6 +21,8 @@
 	<?php
 		if(isset($_GET['error']) && $_GET['error'] == 1){
 			echo "<p class='error'> Login-Daten sind nicht korrekt! </p>";
+		} else if(isset($_GET['code']) && $_GET['code'] == 1){
+			echo "<p class='code'> Nutzer wurde erschaffen! </p>";
 		}
 	?>
 	<form action="login.php" method="post">
