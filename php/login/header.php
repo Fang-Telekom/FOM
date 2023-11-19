@@ -67,10 +67,7 @@
         </nav>
         </header>
     </div>
-	
-<?php
-		echo "<h1>Hallo {$_SESSION['name']} </h1>";
-?>
+
 </body>
 
 </html>
