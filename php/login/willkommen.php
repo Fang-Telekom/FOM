@@ -3,7 +3,7 @@
 	if(isset($_SESSION['login']) &&
 		$_SESSION['login'] == 1){
 ?>
-
+<?php include "header.php"; ?>
 <!DOCTYPE html>
 
 <html>
@@ -12,9 +12,11 @@
 
 	<meta charset="UTF-8" />
 	<title> Willkommen im geschützten Bereich </title>
+
+	
 </head>
 
-<?php include "header.php"; ?>
+
 
 <body>
 	

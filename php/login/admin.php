@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php include "header.php"; ?>
 <html>
 
 <head>
@@ -9,7 +9,7 @@
 
 </head>
 
-<?php include "header.php"; ?>
+
 
 <body>
 
