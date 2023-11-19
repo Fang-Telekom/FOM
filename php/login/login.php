@@ -13,18 +13,18 @@
 		//Anzahl Datensätze ermitelln und ausgeben
 		$num = mysqli_num_rows($req);
 		$dsatz = mysqli_fetch_assoc($req);
-		
+		mysqli_close($con);
 		if($num == 1){
 			$_SESSION['name'] = $_POST['name'];
 			$_SESSION['login'] = "1";
 			$_SESSION['admin'] = $dsatz['admin'];
-			header("Location: willkommen.php");
+			if($dsatz['request'] == 1)
+				header("Location: willkommen.php");
+			else
+				header("Location: willkommen.php");
 			exit;
-		} else
-			mysqli_close($con);
+		} 
 	}
 	header("Location: start.php?error=1");
 	exit;
 ?>
-
-
