@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
 	<style>
 		.sticky-header {
         top: 0;
@@ -43,31 +37,20 @@
 			border-bottom: 1px solid white;
 		}
 	</style>
-</head>
-
-<body>
-
 
 	<div class="sticky-header">
         <header app-name="FOM Köln">
         <h1> FOM Köln </h1>
         <nav>
-			<?php $host ='http://' + htmlspecialchars($_SERVER['HTTP_HOST']);
-				$url = rtrim(dirname(htmlspecialchars($_SERVER["PHP_SELF"])));
-				?>
-            <a href="<?php echo $host . $url;?>/willkommen.php" aria-label="Home"> Home </a>
+            <a href="willkommen.php" aria-label="Home"> Home </a>
             
 
 			<?php
 				if(isset($_SESSION['admin']) &&
 					$_SESSION['admin'] == 1)
-					echo "<a href='$host$url/admin.php' aria-label='Termine'> Admin </a>";
+					echo "<a href='admin.php' aria-label='Admin'> Admin </a>";
 			?>
-            <a href="<?php echo $host . $url;?>/logout.php" aria-label="Logout"> LOG OUT </a>
+            <a href="logout.php" aria-label="Logout"> LOG OUT </a>
         </nav>
         </header>
     </div>
-
-</body>
-
-</html>

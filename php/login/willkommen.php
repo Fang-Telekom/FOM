@@ -3,7 +3,6 @@
 	if(isset($_SESSION['login']) &&
 		$_SESSION['login'] == 1){
 ?>
-<?php include "header.php"; ?>
 <!DOCTYPE html>
 
 <html>
@@ -20,6 +19,7 @@
 
 <body>
 	
+<?php include "header.php"; ?>
 <?php
 		echo "<h1>Hallo {$_SESSION['name']} </h1>";
 ?>
