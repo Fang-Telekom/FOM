@@ -1,27 +1,35 @@
 <?php
-	//Verbindung zum MySQLDatenbankserver aufnehmen
-	$con = mysqli_connect("", "fom", "unifom"); //auch möflich: Host, Benutzer, Kennwort, DB
+
+	$code="0";
+	if($_POST['summe'] >= $_SESSION['kapital'])
+		$code = "-1";
 	
-	//Datenbank auswählen
-	mysqli_select_db($con, "uni");
-	//SQL-Abfrage ausführen
-	$req=mysqli_query($con, "update user set kapital='" . $_SESSION['kapital'] - $_POST['summe']. "' where id='" . $_SESSION['id'] . "'");
-	//Anzahl Datensätze ermitelln und ausgeben
-	$num = mysqli_num_rows($req);
+	else if(isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['id']) && $_POST['id'] != "" &&
+	isset($_POST['summe']) && $_POST['summe'] != ""){
+		$code="1";
+		//Verbindung zum MySQLDatenbankserver aufnehmen
+		$con = mysqli_connect("", "fom", "unifom"); //auch möflich: Host, Benutzer, Kennwort, DB
+		
+		//Datenbank auswählen
+		mysqli_select_db($con, "uni");
+		//SQL-Abfrage ausführen
+		$_SESSION['kapital'] -= $_POST['summe'];
+		if(mysqli_query($con, "update user set kapital='" . $_SESSION['kapital'] . "' where id='" . $_SESSION['id'] . "'"))
+			$code="2";
+		
+		$kapital=mysqli_fetch_assoc(mysqli_query($con, "select * from user where id='" . $_POST['id'] . "' and name='" . $_POST['name'] . "'"))['kapital'] + $_POST['summe'];
+		
+		if(mysqli_query($con, "update user set kapital='" . $kapital . "' where id='" . $_POST['id'] . "' and name='" . $_POST['name'] . "'"))
+			$code="3";
 
-	echo "$num Datensätze wurde gefunden";
-
-	/* Datensätze aus Ergebnis ermitteln,
-	 * in Array speicher und ausgeben */
-	while ($dsatz = mysqli_fetch_assoc($req)){
-		echo $dsatz['name'] . ", "
-		. $dsatz['vorname'] . ", "
-		. $dsatz['personalnummer'] . ", "
-		. $dsatz['gehalt'] . ", "
-		. $dsatz['geburtstag'] . "<br />";
+		// Verbindung schließen
+		mysqli_close($con);
 	}
-	// Verbindung schließen
-	mysqli_close($con);
+	if($_SESSION['request']){
+		header("Location: kreditnehmer.php?code=$code");
+		exit;
+	}else {
+		header("Location: kreditgeber.php?code=$code");
+		exit;
+	}
 ?>
-
-

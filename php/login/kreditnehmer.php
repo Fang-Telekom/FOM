@@ -13,6 +13,11 @@
 	<title> Willkommen im geschützten Bereich </title>
 	<?php include "header.php"; ?>
 	
+	<style>
+		.code{
+			color:green;
+		}
+	</style>
 </head>
 
 
@@ -23,6 +28,19 @@
 		echo "<p> ID: " . $_SESSION['id'] . "</p>";
 ?>
 		<h3> Geld überweisen </h3>
+		<?php 
+		if(isset($_GET['code']) && $_GET['code'] == 0){
+			?><p class="code"> Bitte füllen Sie alles aus </p> <?php
+		} else if(isset($_GET['code']) && $_GET['code'] == 1){
+			?><p class="code"> Es besteht keine Verbindung zum Datenbank</p> <?php
+		}else if(isset($_GET['code']) && $_GET['code'] == 2){
+			?><p class="code"> Die Summe konnte nicht überwiesen werden</p> <?php
+		}else if(isset($_GET['code']) && $_GET['code'] == 3){
+			?><p class="code"> Die Transaktion war erfolgreich</p> <?php
+		}else if(isset($_GET['code']) && $_GET['code'] == -1){
+			?><p class="code"> Die zu Überweisende Betrag darf nicht größer sein als dein Kapital</p> <?php
+		}
+		?>
 		<form action="senden.php" method="post">
 			<p> Konto ID </p>
 			<input type="text" id="id" name="id"> <br/>
