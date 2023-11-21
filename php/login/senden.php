@@ -24,8 +24,7 @@
 
 			// Verbindung schließen
 			mysqli_close($con);
-		}else
-			$code="-1";
+		}
 	}
 	if($_SESSION['request']){
 		header("Location: kreditnehmer.php?code=$code");
