@@ -5,14 +5,14 @@
 
     <meta charset="UTF-8">
     <title> Admin Page </title>
-
+    <?php include "header.php"; ?>
 </head>
 
 
 
 <body>
 
-<?php include "header.php"; ?>
+
 </body>
 
 </html>
