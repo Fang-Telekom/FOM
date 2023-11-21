@@ -13,7 +13,7 @@
 		mysqli_select_db($con, "uni");
 		//SQL-Abfrage ausführen
 		$_SESSION['kapital'] -= $_POST['summe'];
-		if(mysqli_query($con, "update user set kapital='" . $_SESSION['kapital'] . "' where id='" . $_SESSION['id'] . "'"))
+		if(mysqli_query($con, "update user set kapital='" . $_SESSION['kapital'] - $_POST['summe'] . "' where id='" . $_SESSION['id'] . "'"))
 			$code="2";
 		
 		$kapital=mysqli_fetch_assoc(mysqli_query($con, "select * from user where id='" . $_POST['id'] . "' and name='" . $_POST['name'] . "'"))['kapital'] + $_POST['summe'];

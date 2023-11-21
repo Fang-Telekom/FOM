@@ -58,9 +58,10 @@
 		<h3> Kredit Board </h3>
 
 		<h4> Meine Kredit </h4>
+		<?php include "myCredit.php"; ?>
 
 		<h4> Ausgeschrieben </h4>
-
+		
 </body>
 
 

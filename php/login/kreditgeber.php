@@ -63,8 +63,11 @@
 		<h3> Kredit Board </h3>
 
 		<h4> Meine Kredit </h4>
+		<?php include "myCredit.php"; ?>
 
 		<h4> Kreditausschreiben </h4>
+
+		<h4> Kreditannehmen </h4>
 
 		<h4> Ausgeschrieben </h4>
 
