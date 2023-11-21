@@ -17,11 +17,13 @@
 		if($num == 1){
 			$_SESSION['name'] = $_POST['name'];
 			$_SESSION['login'] = "1";
+			$_SESSION['request'] = $dsatz['request'];
+			$_SESSION['kapital'] = $dsatz['kapital'];
 			$_SESSION['admin'] = $dsatz['admin'];
 			if($dsatz['request'] == 1)
-				header("Location: willkommen.php");
+				header("Location: kreditnehmer.php");
 			else
-				header("Location: willkommen.php");
+				header("Location: kreditgeber.php");
 			exit;
 		} 
 	}
