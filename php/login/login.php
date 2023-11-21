@@ -17,6 +17,7 @@
 		if($num == 1){
 			$_SESSION['name'] = $_POST['name'];
 			$_SESSION['login'] = "1";
+			$_SESSION['id'] = $dsatz['id'];
 			$_SESSION['request'] = $dsatz['request'];
 			$_SESSION['kapital'] = $dsatz['kapital'];
 			$_SESSION['admin'] = $dsatz['admin'];

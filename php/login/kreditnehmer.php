@@ -20,6 +20,7 @@
 <?php
 		echo "<h1>Willkommen Kreditnehmer {$_SESSION['name']} </h1>";
 		echo "<p> Kapital: " . $_SESSION['kapital'] . "</p>";
+		echo "<p> ID: " . $_SESSION['id'] . "</p>";
 ?>
 		<h3> Geld überweisen </h3>
 		<form action="senden.php" method="post">
