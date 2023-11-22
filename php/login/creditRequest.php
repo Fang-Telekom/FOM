@@ -7,7 +7,7 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select kredit.id, user.name, kredit.credit, user.kapital from request inner join kredit on request.kredit=kredit.id inner join user on request.requester=user.id where kredit.giver='" . $_SESSION['id'] . "'"));
+    $req = (mysqli_query($con, "select kredit.id, user.name, kredit.credit, user.kapital, user.id as requester from request inner join kredit on request.kredit=kredit.id inner join user on request.requester=user.id where kredit.giver='" . $_SESSION['id'] . "' and request.granted='pending'"));
 
 
     /* Datensätze aus Ergebnis ermitteln,
@@ -23,10 +23,10 @@
             <th> Annehmen </th>
         </tr><?php
     while ($dsatz = mysqli_fetch_assoc($req)){
-        echo "<tr> <td> {$dsatz['id']} </td>";
+        echo "<tr> <td> {$dsatz['id']} <input type='hidden' name='kredit' value{$dsatz['id']}></td>";
         echo "<td> {$dsatz['name']} </td>";
         echo "<td> {$dsatz['credit']} </td>";
-        echo "<td> <input type=radio name=accept value={$dsatz['id']}> </td> </tr>";
+        echo "<td> <input type=radio name=accept value={$dsatz['requester']}> </td> </tr>";
     }
     ?> <table>
     <input type="submit" value="Annehmen">
