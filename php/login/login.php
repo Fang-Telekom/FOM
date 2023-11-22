@@ -21,10 +21,8 @@
 			$_SESSION['request'] = $dsatz['request'];
 			$_SESSION['kapital'] = $dsatz['kapital'];
 			$_SESSION['admin'] = $dsatz['admin'];
-			if($dsatz['request'] == 1)
-				header("Location: kreditnehmer.php");
-			else
-				header("Location: kreditgeber.php");
+			
+			header("Location: willkommen.php");
 			exit;
 		} 
 	}

@@ -26,11 +26,7 @@
 		} else
 			$code="-1";
 	}
-	if($_SESSION['request']){
-		header("Location: kreditnehmer.php?code=$code");
-		exit;
-	}else {
-		header("Location: kreditgeber.php?code=$code");
-		exit;
-	}
+	header("Location: willkommen.php?code=$code");
+	exit;
+	
 ?>

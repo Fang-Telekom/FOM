@@ -42,12 +42,7 @@
 	<header app-name="FOM Köln">
 	<h1> FOM Köln </h1>
 	<nav>
-		<a href=<?php 
-			if($_SESSION['request'])
-				echo "kreditnehmer.php";
-			else {
-				echo "kreditgeber.php";
-			}?> aria-label="Home"> Home </a>
+		<a href="willkommen.php" aria-label="Home"> Home </a>
 		
 
 		<?php
