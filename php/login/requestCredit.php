@@ -13,7 +13,7 @@
 
 		foreach($_POST['credit'] as $c){
 			mysqli_query($con, "insert into request(kredit, requester, granted) value('"
-			. $c . "', '" . $_SESSION['id'] . "', 'pending')");
+			. $c . "', " . $_SESSION['id'] . ", 'pending')");
 		}
 		// Verbindung schließen
 		mysqli_close($con);
