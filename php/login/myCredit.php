@@ -14,15 +14,14 @@
         * in Array speicher und ausgeben */
 	?> 
     <style> table, th, td{ padding: 5px; } </style>
-    <table border="1" padding="2rm"> 
+    <table border="1"> 
         <tr>
-            <th> Kreditnummer </th>
+            <th> Kredit ID </th>
             <th> Kredit </th> 
             <th> Status </th>
         </tr><?php
     while ($dsatz = mysqli_fetch_assoc($req)){
-        echo "<tr> <td> {$dsatz['id']} </td>";
-        echo "<td> {$dsatz['id']} </td>";
+        echo "<tr> <td> {$dsatz['kredit.id']} </td>";
         echo "<td> {$dsatz['credit']} </td>";
         echo "<td> {$dsatz['request.granted']} </td> </tr>";
     }

@@ -72,9 +72,10 @@
 			echo "<h4> Kreditausschreiben </h4>";
 		
 			echo "<h4> Kreditannehmen </h4>";
-		}?>
-		<h4> Ausgeschrieben </h4>
-
+		}
+		echo "<h4> Ausgeschrieben </h4>";
+		include "credits.php";
+		?>
 </body>
 
 </html>

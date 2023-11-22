@@ -7,21 +7,25 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select * from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "' or request.giver='" . $_SESSION['id'] . "'"));
+    $req = (mysqli_query($con, "select * from kredit inner join user on kredit.giver=user.id"));
 
     /* Datensätze aus Ergebnis ermitteln,
         * in Array speicher und ausgeben */
-    ?> <table>
+    ?> <style> table, th, td{ padding: 5px; } </style>
+    <table>
         <tr>
-            <th> Kreditnummer </th>
+            <th> Kredit ID</th>
+            <th> Leiher </th>
             <th> Kredit </th> 
-            <th> Status </th>
+            <th> Zins </th>
+            <th> Veröffentlicht </th>
         </tr><?php
     while ($dsatz = mysqli_fetch_assoc($req)){
-        echo "<tr> <td> {$dsatz['id']} </td>";
-        echo "<td> {$dsatz['id']} </td>";
+        echo "<tr> <td> {$dsatz['kredit.id']} </td>";
+        echo "<td> {$dsatz['user.name']} </td>";
         echo "<td> {$dsatz['credit']} </td>";
-        echo "<td> {$dsatz['request.granted']} </td> </tr>";
+        echo "<td> {$dsatz['interest']} </td>";
+        echo "<td> {$dsatz['publish']} </td> </tr>";
     }
     ?> <table> <?php
 
