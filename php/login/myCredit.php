@@ -7,7 +7,7 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select * from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "' or kredit.giver='" . $_SESSION['id'] . "'"));
+    $req = (mysqli_query($con, "select kredit.id, kredit.credit, request.granted from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "' or kredit.giver='" . $_SESSION['id'] . "'"));
 
 
     /* Datensätze aus Ergebnis ermitteln,
@@ -21,9 +21,9 @@
             <th> Status </th>
         </tr><?php
     while ($dsatz = mysqli_fetch_assoc($req)){
-        echo "<tr> <td> {$dsatz['kredit.id']} </td>";
+        echo "<tr> <td> {$dsatz['id']} </td>";
         echo "<td> {$dsatz['credit']} </td>";
-        echo "<td> {$dsatz['request.granted']} </td> </tr>";
+        echo "<td> {$dsatz['granted']} </td> </tr>";
     }
     ?> <table> <?php
 
