@@ -7,7 +7,7 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select kredit.id, kredit.credit, request.granted from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "' or kredit.giver='" . $_SESSION['id'] . "'"));
+    $req = (mysqli_query($con, "select kredit.id, kredit.credit, request.granted from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "'"));
 
 
     /* Datensätze aus Ergebnis ermitteln,
