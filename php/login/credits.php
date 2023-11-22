@@ -1,5 +1,5 @@
 <?php
-    session_start();	
+
     //Verbindung zum MySQLDatenbankserver aufnehmen
     $con = mysqli_connect("", "fom", "unifom"); //auch möflich: Host, Benutzer, Kennwort, DB
     
@@ -7,14 +7,11 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select * from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "' or kredit.giver='" . $_SESSION['id'] . "'"));
-
+    $req = (mysqli_query($con, "select * from request inner join kredit on request.kredit=kredit.id where request.requester='" . $_SESSION['id'] . "' or request.giver='" . $_SESSION['id'] . "'"));
 
     /* Datensätze aus Ergebnis ermitteln,
         * in Array speicher und ausgeben */
-	?> 
-    <style> table, th, td{ padding: 5px; } </style>
-    <table border="1" padding="2rm"> 
+    ?> <table>
         <tr>
             <th> Kreditnummer </th>
             <th> Kredit </th> 

@@ -38,7 +38,7 @@
 		}else if(isset($_GET['code']) && $_GET['code'] == 3){
 			?><p class="code"> Die Transaktion war erfolgreich</p> <?php
 		}else if(isset($_GET['code']) && $_GET['code'] == -1){
-			?><p class="code"> Die zu Überweisende Betrag darf nicht größer sein als dein Kapital</p> <?php
+			?><p class="code"> Es kann nicht an sich selbst überwiesen werden. </p> <?php
 		}
 		?>
 		<form action="senden.php" method="post">
