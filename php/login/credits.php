@@ -13,7 +13,7 @@
         * in Array speicher und ausgeben */
     ?> <style> table, th, td{ padding: 5px; } </style>
     
-    <form action="request.php" method="post">
+    <form action="requestCredit.php" method="post">
     <table border="1">
         <tr>
             <th> Kredit ID</th>

@@ -93,6 +93,11 @@
 			include "creditRequest.php";
 		}
 		echo "<h4> Ausgeschrieben </h4>";
+		if(isset($_GET['code']) && $_GET['code'] == 6){
+			?><p class="code"> Bitte wählen Sie mindestens einen Kredit </p> <?php
+		} else if(isset($_GET['code']) && $_GET['code'] == 7){
+			?><p class="code"> Erfolgreich Ausgeschrieben</p> <?php
+		}
 		include "credits.php";
 		?>
 </body>
