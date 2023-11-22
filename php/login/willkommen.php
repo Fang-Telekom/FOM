@@ -70,7 +70,25 @@
 		
 		if(!($_SESSION['request'])){
 			echo "<h4> Kreditausschreiben </h4>";
-		
+			
+			if(isset($_GET['code']) && $_GET['code'] == 4){
+				?><p class="code"> Bitte füllen Sie alles aus </p> <?php
+			} else if(isset($_GET['code']) && $_GET['code'] == 5){
+				?><p class="code"> Erfolgreich Ausgeschrieben</p> <?php
+			}
+			?>
+
+			<form action="postCredit.php" method="post">
+				Kredithöhe <br/>
+				<input type="number" name="credit" size="20">
+				<br/>
+				Zins <br/>
+				<input type="number" name="interest" size="20">
+				<br/>
+				<input type="submit" value="Auschreiben">
+				<input type="reset" value="Reset">
+			</form>
+			<?php
 			echo "<h4> Kreditannehmen </h4>";
 		}
 		echo "<h4> Ausgeschrieben </h4>";
