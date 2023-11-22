@@ -70,7 +70,7 @@
 		
 		if(!($_SESSION['request'])){
 			echo "<h4> Kreditausschreiben </h4>";
-			
+
 			if(isset($_GET['code']) && $_GET['code'] == 4){
 				?><p class="code"> Bitte füllen Sie alles aus </p> <?php
 			} else if(isset($_GET['code']) && $_GET['code'] == 5){
@@ -82,7 +82,7 @@
 				Kredithöhe <br/>
 				<input type="number" name="credit" size="20">
 				<br/>
-				Zins <br/>
+				Zins (%) <br/>
 				<input type="number" name="interest" size="20">
 				<br/>
 				<input type="submit" value="Auschreiben">
@@ -90,6 +90,7 @@
 			</form>
 			<?php
 			echo "<h4> Kreditannehmen </h4>";
+			include "creditRequest.php";
 		}
 		echo "<h4> Ausgeschrieben </h4>";
 		include "credits.php";
