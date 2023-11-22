@@ -26,7 +26,7 @@
         echo "<tr> <td> {$dsatz['id']} </td>";
         echo "<td> {$dsatz['name']} </td>";
         echo "<td> {$dsatz['credit']} </td>";
-        echo "<td> <input type=checkbox name=accept[] value={$dsatz['id']}> </td> </tr>";
+        echo "<td> <input type=radio name=accept value={$dsatz['id']}> </td> </tr>";
     }
     ?> <table>
     <input type="submit" value="Annehmen">

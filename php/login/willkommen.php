@@ -90,6 +90,11 @@
 			</form>
 			<?php
 			echo "<h4> Kreditannehmen </h4>";
+			if(isset($_GET['code']) && $_GET['code'] == 8){
+				?><p class="code"> Bitte wählen Sie mindestens einen Kredit </p> <?php
+			} else if(isset($_GET['code']) && $_GET['code'] == 11){
+				?><p class="code"> Erfolgreich Angenommen</p> <?php
+			}
 			include "creditRequest.php";
 		}
 		echo "<h4> Ausgeschrieben </h4>";
