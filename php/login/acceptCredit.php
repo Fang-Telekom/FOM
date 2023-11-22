@@ -2,7 +2,7 @@
 	session_start();
 	$code="8";
 	
-	if(isset($_POST['accept'])){
+	if(isset($_POST['accept']) && isset($_POST['accept'])){
 		
 		//Verbindung zum MySQLDatenbankserver aufnehmen
 		$con = mysqli_connect("", "fom", "unifom"); //auch möflich: Host, Benutzer, Kennwort, DB
