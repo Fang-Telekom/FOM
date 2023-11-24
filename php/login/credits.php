@@ -7,7 +7,7 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select kredit.id, user.name, kredit.credit, kredit.interest, kredit.publish from kredit inner join user on kredit.giver=user.id"));
+    $req = (mysqli_query($con, "select kredit.id, user.name, kredit.credit, kredit.interest, kredit.publish from kredit inner join user on kredit.giver=user.id where kredit.granted is NULL"));
 
     /* Datensätze aus Ergebnis ermitteln,
         * in Array speicher und ausgeben */

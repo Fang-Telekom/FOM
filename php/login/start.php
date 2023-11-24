@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+	<h1> FOM Köln </h1>
 	<?php
 		if(isset($_GET['error']) && $_GET['error'] == 1){
 			echo "<p class='error'> Login-Daten sind nicht korrekt! </p>";

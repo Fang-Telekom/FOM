@@ -42,6 +42,8 @@
 
 		<input type="submit" value="Anmelden"> <input type="reset">
 	</form>
+
+	<p><a href="start.php"> Zurück zur Startseite </a></p>
 </body>
 
 </html>

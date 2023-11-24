@@ -16,6 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `kredit`
+--
+
+DROP TABLE IF EXISTS `kredit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kredit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `giver` int(11) DEFAULT NULL,
+  `publish` date DEFAULT NULL,
+  `credit` double DEFAULT NULL,
+  `interest` double DEFAULT NULL,
+  `requester` int(11) DEFAULT NULL,
+  `granted` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `requester` (`requester`),
+  KEY `giver` (`giver`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kredit`
+--
+
+LOCK TABLES `kredit` WRITE;
+/*!40000 ALTER TABLE `kredit` DISABLE KEYS */;
+INSERT INTO `kredit` VALUES
+(1,1,'2023-11-22',10005,2,2,'2023-11-22'),
+(2,12,'2023-11-23',100000,2,NULL,NULL);
+/*!40000 ALTER TABLE `kredit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personen`
 --
 
@@ -46,6 +79,67 @@ INSERT INTO `personen` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kredit` int(11) DEFAULT NULL,
+  `requester` int(11) DEFAULT NULL,
+  `granted` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `kredit` (`kredit`),
+  KEY `requester` (`requester`),
+  CONSTRAINT `request_ibfk_1` FOREIGN KEY (`kredit`) REFERENCES `kredit` (`id`),
+  CONSTRAINT `request_ibfk_2` FOREIGN KEY (`requester`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request`
+--
+
+LOCK TABLES `request` WRITE;
+/*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES
+(1,1,2,'granted');
+/*!40000 ALTER TABLE `request` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transaction`
+--
+
+DROP TABLE IF EXISTS `transaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `receiver` int(11) DEFAULT NULL,
+  `sender` int(11) DEFAULT NULL,
+  `sum` double DEFAULT NULL,
+  `comment` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `receiver` (`receiver`),
+  KEY `sender` (`sender`),
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`receiver`) REFERENCES `user` (`id`),
+  CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`sender`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction`
+--
+
+LOCK TABLES `transaction` WRITE;
+/*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -59,8 +153,9 @@ CREATE TABLE `user` (
   `kapital` int(11) DEFAULT NULL,
   `mail` varchar(50) DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL,
+  `request` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,12 +165,10 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'Hans','3e45af4ca27ea2b03fc6183af40ea112',100000,'Hans.King@gmail.com',1),
-(5,'Henry','d41d8cd98f00b204e9800998ecf8427e',5000,'Henry@gmail.com',0),
-(6,'Henry','3e45af4ca27ea2b03fc6183af40ea112',50000,'Henry@gmail.com',0),
-(7,'Zhi Yang Fang','3e45af4ca27ea2b03fc6183af40ea112',5000,'zhi-yang.fang@telekom.de',0),
-(8,'Henrie','3e45af4ca27ea2b03fc6183af40ea112',5000,'Henrie@gmail.com',0),
-(9,'Blob','3e45af4ca27ea2b03fc6183af40ea112',500,'blob@gmail.com',0);
+(1,'Hans','3e45af4ca27ea2b03fc6183af40ea112',600009,'Hans.King@gmail.com',1,0),
+(2,'Mario','3e45af4ca27ea2b03fc6183af40ea112',4911060,'Mario@gmail.com',0,1),
+(11,'Henri','827ccb0eea8a706c4c34a16891f84e7b',200001,'henriprenzel2@gmail.com',0,1),
+(12,'Henry','827ccb0eea8a706c4c34a16891f84e7b',99800000,'henrip@mail.com',0,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-14 22:13:00
+-- Dump completed on 2023-11-24 10:34:04
