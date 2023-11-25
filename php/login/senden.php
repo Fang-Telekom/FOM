@@ -21,6 +21,9 @@
 			if(mysqli_query($con, "update user set kapital='" . $kapital . "' where id='" . $_POST['id'] . "' and name='" . $_POST['name'] . "'"))
 				$code="3";
 
+			mysqli_query($con, "insert into transaction(receiver, sender, sum, comment) value('"
+			. $_POST['id'] . ", " . $_SESSION['id'] . ", '". $_POST['summe'] . "', '". $_POST['comment'] . "')");
+
 			// Verbindung schließen
 			mysqli_close($con);
 		} else
