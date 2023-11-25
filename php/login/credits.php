@@ -29,7 +29,7 @@
         echo "<td> {$dsatz['credit']} </td>";
         echo "<td> {$dsatz['interest']} </td>";
         echo "<td> {$dsatz['publish']} </td>";
-        echo "<td> <input type=checkbox name=credit[] value={$dsatz['kredit.id']}> </td> </tr>";
+        echo "<td> <input type=checkbox name=credit[] value='{$dsatz['kredit.id']}'> </td> </tr>";
     }
     ?> <table>
     <input type="submit" value="Beantragen">
