@@ -16,6 +16,17 @@
 			$code="10";
 		if(mysqli_query($con, "update kredit set requester={$_POST['accept']}, granted='" . date("Y-m-d") . "' where id={$_POST['kredit']}"))
 			$code="11";
+		
+		//Transfer Money
+		if($_POST['id'] != $_SESSION['id']){
+			$_SESSION['kapital'] = $_SESSION['kapital'] - $_POST['credit'];
+			mysqli_query($con, "update user set kapital=" . $_SESSION['kapital'] . " where id='" . $_SESSION['id'] . "'");
+		
+			$kapital=mysqli_fetch_assoc(mysqli_query($con, "select * from user where id='" . $_POST['accept'] . "'"))['kapital'] + $_POST['credit'];
+			
+			mysqli_query($con, "update user set kapital='" . $kapital . "' where id='" . $_POST['accept'] . "'");
+		}
+
 		// Verbindung schließen
 		mysqli_close($con);
 	}
