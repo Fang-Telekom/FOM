@@ -23,9 +23,9 @@
             <th> Annehmen </th>
         </tr><?php
     while ($dsatz = mysqli_fetch_assoc($req)){
-        echo "<tr> <td> {$dsatz['id']} <input type='hidden' name='kredit' value{$dsatz['id']}></td>";
+        echo "<tr> <td> {$dsatz['id']} <input type='hidden' name='kredit' value='{$dsatz['id']}'></td>";
         echo "<td> {$dsatz['name']} </td>";
-        echo "<td> {$dsatz['credit']} </td>";
+        echo "<td> {$dsatz['credit']} <input type='hidden' name='credit' value='{$dsatz['credit']}'> </td> ";
         echo "<td> <input type=radio name=accept value={$dsatz['requester']}> </td> </tr>";
     }
     ?> <table>
