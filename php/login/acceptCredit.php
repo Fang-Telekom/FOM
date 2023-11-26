@@ -27,7 +27,7 @@
 			mysqli_query($con, "update user set kapital='" . $kapital . "' where id='" . $_POST['accept'] . "'");
 		}
 		mysqli_query($con, "insert into transaction(receiver, sender, sum, comment) value('"
-		. $_POST['accept'] . ", " . $_SESSION['id'] . ", '". $_POST['credit'] . "', 'Your Credit-Request has been approved')");
+		. $_POST['accept'] . "', '" . $_SESSION['id'] . "', '". $_POST['credit'] . "', 'Your Credit-Request has been approved')");
 
 
 		// Verbindung schließen
