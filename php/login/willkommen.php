@@ -20,19 +20,37 @@
 		.code{
 			color:green;
 		}
+		.body{       
+        width:80%;
+        margin: auto;
+        background-color: white;
+
+    }
+    .row{
+        display: flex;
+        align-items: center;
+        text-align: left;
+        margin: auto;
+        padding: 1.5rem;
+    }
+    .w50{
+        width: 50%;
+    }
 	</style>
 </head>
 
 
 
 <body>
-	
-
+	<div class="body">
+		<div class="row">
 <?php
 		echo "<h1>Willkommen {$_SESSION['name']} </h1>";
 		echo "<p> Kapital: " . $_SESSION['kapital'] . "</p>";
 		echo "<p> ID: " . $_SESSION['id'] . "</p>";
 ?>
+		</div>
+		<div class="row"> <div class="w50">
 		<h3> Geld überweisen </h3>
 
 		<?php 
@@ -62,13 +80,19 @@
 			<input type="submit" value="Senden">
 			<input type="reset" value="Zurücksetzen">
 		</form>
+		</div> <div class="w50">
 		<h3> Transaktionen </h3>
 		<?php include "transaction.php"; ?>
+		</div> </div>
+		<div class="row">
 		<h3> Kredit Board </h3>
-
+		<div class="w50">
 		<h4> Meine Kredit </h4>
 		<?php include "myCredit.php";
-		
+		?>
+		</div> </div>
+		<div class="row">
+		<div class="w50"> <?php
 		if(!($_SESSION['request'])){
 			echo "<h4> Kreditausschreiben </h4>";
 
@@ -89,6 +113,8 @@
 				<input type="submit" value="Auschreiben">
 				<input type="reset" value="Reset">
 			</form>
+		</div>
+		<div class="w50">
 			<?php
 			echo "<h4> Kreditannehmen </h4>";
 			if(isset($_GET['code']) && $_GET['code'] == 8){
@@ -97,7 +123,10 @@
 				?><p class="code"> Erfolgreich Angenommen</p> <?php
 			}
 			include "creditRequest.php";
-		}
+		}?>
+		</div> </div>
+		<div class="row">
+			<?php
 		echo "<h4> Ausgeschrieben </h4>";
 		if(isset($_GET['code']) && $_GET['code'] == 6){
 			?><p class="code"> Bitte wählen Sie mindestens einen Kredit </p> <?php
@@ -106,6 +135,8 @@
 		}
 		include "credits.php";
 		?>
+		</div>
+	</div>
 </body>
 
 </html>
