@@ -62,7 +62,8 @@
 			<input type="submit" value="Senden">
 			<input type="reset" value="Zurücksetzen">
 		</form>
-
+		<h3> Transaktionen </h3>
+		<?php include "transaction.php"; ?>
 		<h3> Kredit Board </h3>
 
 		<h4> Meine Kredit </h4>
