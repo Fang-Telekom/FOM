@@ -42,7 +42,7 @@
 
 
 <body>
-	<div class="body">
+	
 <?php
 		echo "<h1>Willkommen {$_SESSION['name']} </h1>";
 		echo "<p> Kapital: " . $_SESSION['kapital'] . "</p>";
