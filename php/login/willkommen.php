@@ -24,18 +24,8 @@
         width:80%;
         margin: auto;
         background-color: white;
-
-    }
-    .row{
-        display: flex;
-        align-items: center;
-        text-align: left;
-        margin: auto;
-        padding: 1.5rem;
-    }
-    .w50{
-        width: 50%;
-    }
+		display: auto;
+		}
 	</style>
 </head>
 
@@ -49,7 +39,6 @@
 		echo "<p> ID: " . $_SESSION['id'] . "</p>";
 ?>
 		
-		<div class="row">
 			<div>
 			<h3> Geld überweisen </h3>
 
@@ -88,12 +77,12 @@
 		</div>
 		
 		<h3> Kredit Board </h3>
-		<div class="row">					
+		<div>					
 			<h4> Meine Kredit </h4>
 			<?php include "myCredit.php";
 			?>
 		</div>
-		<div class="row">
+		<div>
 			<?php
 			if(!($_SESSION['request'])){
 				echo "<h4> Kreditausschreiben </h4>";
@@ -127,7 +116,7 @@
 				}
 			?>
 		</div>
-		<div class="row">
+		<div>
 			<?php
 		echo "<h4> Ausgeschrieben </h4>";
 		if(isset($_GET['code']) && $_GET['code'] == 6){
