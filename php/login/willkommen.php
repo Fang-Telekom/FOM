@@ -42,7 +42,7 @@
 
 
 <body>
-	
+	<div class="body">
 <?php
 		echo "<h1>Willkommen {$_SESSION['name']} </h1>";
 		echo "<p> Kapital: " . $_SESSION['kapital'] . "</p>";
@@ -87,8 +87,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<h3> Kredit Board </h3>
 			<div class="w50">
+			<h3> Kredit Board </h3>		
 				<h4> Meine Kredit </h4>
 				<?php include "myCredit.php";
 				?>
