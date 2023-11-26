@@ -22,7 +22,7 @@
 				$code="3";
 
 			mysqli_query($con, "insert into transaction(receiver, sender, sum, comment) value('"
-			. $_POST['id'] . ", " . $_SESSION['id'] . ", '". $_POST['summe'] . "', '". $_POST['comment'] . "')");
+			. $_POST['id'] . "', '" . $_SESSION['id'] . "', '". $_POST['summe'] . "', '". $_POST['comment'] . "')");
 
 			// Verbindung schließen
 			mysqli_close($con);
