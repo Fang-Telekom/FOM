@@ -86,9 +86,10 @@
 				<?php include "transaction.php"; ?>
 			</div>
 		</div>
-		<div class="row">
+		
+		<h3> Kredit Board </h3>
+		<div class="row">			
 			<div class="w50">
-			<h3> Kredit Board </h3>		
 				<h4> Meine Kredit </h4>
 				<?php include "myCredit.php";
 				?>
@@ -130,15 +131,15 @@
 			</div>
 		</div>
 		<div class="row">
-				<?php
-			echo "<h4> Ausgeschrieben </h4>";
-			if(isset($_GET['code']) && $_GET['code'] == 6){
-				?><p class="code"> Bitte wählen Sie mindestens einen Kredit </p> <?php
-			} else if(isset($_GET['code']) && $_GET['code'] == 7){
-				?><p class="code"> Erfolgreich Ausgeschrieben</p> <?php
-			}
-			include "credits.php";
-			?>
+			<?php
+		echo "<h4> Ausgeschrieben </h4>";
+		if(isset($_GET['code']) && $_GET['code'] == 6){
+			?><p class="code"> Bitte wählen Sie mindestens einen Kredit </p> <?php
+		} else if(isset($_GET['code']) && $_GET['code'] == 7){
+			?><p class="code"> Erfolgreich Ausgeschrieben</p> <?php
+		}
+		include "credits.php";
+		?>
 		</div>
 	</div>
 </body>
