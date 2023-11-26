@@ -50,6 +50,7 @@
 ?>
 		
 		<div class="row">
+			<div>
 			<h3> Geld überweisen </h3>
 
 			<?php 
@@ -79,8 +80,11 @@
 				<input type="submit" value="Senden">
 				<input type="reset" value="Zurücksetzen">
 			</form>
+			</div>
+			<div>
 			<h3> Transaktionen </h3>
 			<?php include "transaction.php"; ?>
+			</div>
 		</div>
 		
 		<h3> Kredit Board </h3>
