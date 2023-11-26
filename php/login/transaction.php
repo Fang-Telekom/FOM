@@ -7,7 +7,7 @@
     mysqli_select_db($con, "uni");
     //SQL-Abfrage ausführen
     
-    $req = (mysqli_query($con, "select sender.name as sender, receiver.name as receiver, transaction.sum, transaction.comment from transaction inner join user receiver on transaction.receiver=receiver.id inner join user sender on transaction.sender=sender.id where receiver.id='" . $_SESSION['id'] ."'"));
+    $req = (mysqli_query($con, "select sender.name as sender, receiver.name as receiver, transaction.sum, transaction.comment from transaction inner join user receiver on transaction.receiver=receiver.id inner join user sender on transaction.sender=sender.id where receiver.id='" . $_SESSION['id'] ."' or sender.id='" . $_SESSION['id'] ."'"));
 
     /* Datensätze aus Ergebnis ermitteln,
         * in Array speicher und ausgeben */
