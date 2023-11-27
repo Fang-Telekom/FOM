@@ -10,9 +10,17 @@
 		if(isset($_POST['pass']) && $_POST['pass'] != ""){
 			mysqli_query($con, "update user set pass='" . md5($_POST['pass']) . "' where id='". $_POST['id'] . "'");
 		}
+		if(isset($_POST['request']))
+			$request=1;
+		else
+			$request=0;
+		if(isset($_POST['admin']))
+			$admin=1;
+		else
+			$admin=0;
 		mysqli_query($con, "update user set name='" . $_POST['name'] .
 				 "', kapital='" . $_POST['kapital'] . "', mail='" . $_POST['mail']
-				 . "', request='" . (isset($_POST['request'])) . "', admin='" . (isset($_POST['admin'])) . "' where id='". $_POST['id'] . "'");
+				 . "', request='" . $request . "', admin='" . $admin . "' where id='". $_POST['id'] . "'");
 		mysqli_close($con);
 		header("Location: admin.php?code=1");
 		exit;
