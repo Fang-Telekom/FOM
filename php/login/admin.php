@@ -12,7 +12,6 @@
         width:80%;
         margin: auto;
         background-color: white;
-		display: flex;
 		}
         </style>
 </head>
