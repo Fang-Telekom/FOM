@@ -8,10 +8,8 @@
     <?php include "header.php"; ?>
 </head>
 
-
-
 <body>
-
+    <?php include "users.php"; ?>
 
 </body>
 
