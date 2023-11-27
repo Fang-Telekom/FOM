@@ -24,7 +24,7 @@
         width:80%;
         margin: auto;
         background-color: white;
-		display: auto;
+		display: flex;
 		}
 	</style>
 </head>
