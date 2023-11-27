@@ -8,7 +8,7 @@
     <?php include "header.php"; ?>
 
     <style>
-    body{       
+    .body{       
         width:80%;
         margin: auto;
         background-color: white;
@@ -17,8 +17,9 @@
 </head>
 
 <body>
+    <div class="body">
     <?php include "users.php"; ?>
-
+    </div>
 </body>
 
 </html>
