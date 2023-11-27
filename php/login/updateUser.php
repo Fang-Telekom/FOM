@@ -12,7 +12,7 @@
 		}
 		mysqli_query($con, "update user set name='" . $_POST['name'] .
 				 "', kapital='" . $_POST['kapital'] . "', mail='" . $_POST['mail']
-				 . "', request='" . (isset($_POST['request']) && $_POST['request']) . "', admin='" . (isset($_POST['admin']) && $_POST['admin']) . "' where id='". $_POST['id'] . "'");
+				 . "', request='" . (isset($_POST['request'])) . "', admin='" . (isset($_POST['admin'])) . "' where id='". $_POST['id'] . "'");
 		mysqli_close($con);
 		header("Location: admin.php?code=1");
 		exit;
