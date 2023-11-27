@@ -32,8 +32,8 @@
         <td> <input type='text' name='pass'> </td>
         <td> <input type='number' name='kapital' value='<?php echo $dsatz['kapital']; ?>'> </td>
         <td> <input type='text' name='mail' value='<?php echo $dsatz['mail']; ?>'> </td>
-        <td> <input type='checkbox' name='request' <?php if($dsatz['request']) echo "checked"; ?>> </td>
-        <td> <input type='checkbox' name='admin' <?php if($dsatz['admin']) echo "checked"; ?>> </td> 
+        <td> <input type='checkbox' name='request' <?php if($dsatz['request']) echo "checked value='1'"; else echo "value='0'"; ?>> </td>
+        <td> <input type='checkbox' name='admin' <?php if($dsatz['admin']) echo "checked value='1'"; else echo "value='0'"; ?>> </td> 
         <td><input type="submit" value="Update"></td></tr>
         </form><?php
     }
