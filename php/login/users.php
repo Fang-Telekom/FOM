@@ -27,7 +27,7 @@
         </tr><?php
     while ($dsatz = mysqli_fetch_assoc($req)){
         ?><form action="updateUser.php" method="post">
-        <tr> <td> <?php echo $dsatz['id']; ?> </td>"
+        <tr> <td> <?php echo $dsatz['id']; ?> <input type='hidden' name='id' value='<?php echo $dsatz['id']; ?>'></td>
         <td> <input type='text' name='name' value='<?php echo $dsatz['name']; ?>'> </td>
         <td> <input type='text' name='pass'> </td>
         <td> <input type='number' name='kapital' value='<?php echo $dsatz['kapital']; ?>'> </td>
