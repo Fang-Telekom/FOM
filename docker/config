@@ -13,5 +13,5 @@ contexts:
  -name: "gcp-71f47f" 
  context: 
   user: "gcp-71f47f" 
-  cluster: "gcp-71f47f“
-current-context: "gcp-71f47f“
+  cluster: "gcp-71f47f"
+current-context: "gcp-71f47f"
