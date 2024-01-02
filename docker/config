@@ -1,17 +1,20 @@
 apiVersion: v1
 kind: Config
 clusters:
- -name: "gcp-71f47f" 
- cluster: 
- server: https://rancher.chfrank.net/k8s/clusters/c-gxq87
- certificate-authority-data: XXXX
+- name: "aks-88fde8"
+  cluster:
+    server: "https://rancher.chfrank.net/k8s/clusters/c-2tb6z"
+
 users:
- -name: "gcp-71f47f" 
- user: 
-  token: XXX
+- name: "aks-88fde8"
+  user:
+    token: "kubeconfig-u-8s8bwjlm54:chm9xnd59zl996j85d5sq8vftfn9pm6rr5wftd6kw9ll6mfl9hj27m"
+
+
 contexts:
- -name: "gcp-71f47f" 
- context: 
-  user: "gcp-71f47f" 
-  cluster: "gcp-71f47f"
-current-context: "gcp-71f47f"
+- name: "aks-88fde8"
+  context:
+    user: "aks-88fde8"
+    cluster: "aks-88fde8"
+
+current-context: "aks-88fde8"
