@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Config
 clusters:
- - name: "gcp-71f47f" 
+ -name: "gcp-71f47f" 
  cluster: 
  server: https://rancher.chfrank.net/k8s/clusters/c-gxq87
  certificate-authority-data: XXXX
 users:
- - name: "gcp-71f47f" 
+ -name: "gcp-71f47f" 
  user: 
- token: XXX
+  token: XXX
 contexts:
-- name: "gcp-71f47f" 
+ -name: "gcp-71f47f" 
  context: 
- user: "gcp-71f47f" 
- cluster: "gcp-71f47f“
-current-context: "gcp-71f47f“
+  user: "gcp-71f47f" 
+  cluster: "gcp-71f47f"
+current-context: "gcp-71f47f"
