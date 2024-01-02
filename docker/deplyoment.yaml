@@ -14,8 +14,8 @@ apiVersion: apps/v1
 	app: nginx 
 	spec: 
 	containers: 
-	- name: nginx 
+	-name: nginx 
 	image: nginx:latest 
 	ports: 
-	- containerPort: 80 
+	-containerPort: 80 
 	name: http-server
