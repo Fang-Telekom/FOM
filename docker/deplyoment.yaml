@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cf-web-svr-it2
+  name: zyf-web-svr-it2
   namespace: fom
 spec:
   replicas: 1
