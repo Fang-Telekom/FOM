@@ -4,6 +4,7 @@ import seaborn as sns; sns.set_theme()
 
 from sklearn.linear_model import LinearRegression
 
+# 3 Dimensionale Lineare Regression auch möglich
 rng = np.random.RandomState(1)
 X = 10 * rng.rand(100, 3)
 y = 0.5 + np.dot(X, [1.5, -2., 1.])

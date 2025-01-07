@@ -6,9 +6,11 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
 
+# Erbung von BaseEstimator und TransformerMixin
 class GaussianFeature (BaseEstimator, TransformerMixin):
     # Gleichmäßig verteilte Gauß’sche Merkmale für eindimensionale Eingaben
     def __init__(self, N, width_factor=2.0):
+        # N = Anzahl von Centers
         self.N = N
         self.width_factor = width_factor
     @staticmethod
@@ -35,6 +37,8 @@ xfit = np.linspace(0, 10, 1000)
 yfit = gauss_model.predict(xfit[:, np.newaxis])
 plt.scatter(x, y)
 plt.plot(xfit, yfit)
+
+# Koordinate x-Achsen werden auf 0 bis 10 gerichtet
 plt.xlim(0, 10)
 
 plt.show()
