@@ -11,4 +11,4 @@ y = np.array([6, 7, 8, 9, 10])
 model = LinearRegression()
 model.fit(x, y)
 
-y_pred = model.predict()
+y_pred = model.predict(x)
